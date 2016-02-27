@@ -2,6 +2,11 @@ class Fixnum
 	def ^(exponent); self**exponent end
 end
 
+class Float
+	def even?; self.whole? ? self.to_i.even? : false; end
+	def odd?; self.whole? ? self.to_i.odd? : false; end
+end
+
 class Numeric
 	def ^(exponent); self**exponent end
 	def sqrt; Math.sqrt(self); end
@@ -63,6 +68,8 @@ module Text2Code
 		def self.length(s); s.length; end
 		def self.sqrt(x); Math.sqrt(x); end
 		def self.abs(x); x.abs; end
+		def self.rand_int(low, high); rand(low.floor..high.floor); end
+		def self.rand_dec(low, high); rand(low.to_f..high.to_f); end 
 	end
 	class Variable
 		def initialize(val=nil)
@@ -324,6 +331,9 @@ module Text2Code
 
 	inst_set.add_instruction_schema([{:prompt => :message}, {:to => :optional}, {:get => :optional}, {:number => :message}, 
 		                             {:with => :optional}, {:message => :message}, :argument], :prompt_num)
+
+	inst_set.add_instruction_schema([{:random => :message}, {:integer => :optional}, {:from => :optional}, :argument, :argument], :rand_int)
+	inst_set.add_instruction_schema([{:random => :message}, {:decimal => :optional}, {:from => :optional}, :argument, :argument], :rand_dec)
 
 	inst_set.create_methods
 

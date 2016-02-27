@@ -35,7 +35,7 @@ set endNum to 7
 puts from text str get substring from letter start, endNum
 
 puts prompt to get text with message "Enter something interesting:"
-puts prompt to get text with message "Enter some interesting number:"
+puts prompt to get number with message "Enter some interesting number:"
 
 set generic_number_variable to 3.14
 set generic_string_variable to "Ruby and Text2Code!"
@@ -46,3 +46,10 @@ puts (from text generic_string_variable get substring from letter 1, (length of 
 if generic_boolean_variable then
     puts "Yes, I really am true!"
 end
+
+puts random integer from -5, 7
+puts random decimal from -5, 7
+puts 15.0.is divisible by 7
+puts 15.0.is odd
+puts 15.0.is even
+puts 17.01.is odd
