@@ -53,3 +53,10 @@ puts 15.0.is divisible by 7
 puts 15.0.is odd
 puts 15.0.is even
 puts 17.01.is odd
+
+set t to 3.0
+
+t.times do 
+	print random integer from 0, 1
+	puts ""
+end

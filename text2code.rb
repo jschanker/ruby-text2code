@@ -5,6 +5,7 @@ end
 class Float
 	def even?; self.whole? ? self.to_i.even? : false; end
 	def odd?; self.whole? ? self.to_i.odd? : false; end
+	def times &block; self.to_i.times(&block); end
 end
 
 class Numeric
