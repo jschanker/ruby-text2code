@@ -64,7 +64,7 @@ module Text2Code
 		end
 		def self.prompt_str(msg)
 			puts msg
-			gets
+			gets.chomp
 		end
 		def self.length(s); s.length; end
 		def self.sqrt(x); Math.sqrt(x); end
