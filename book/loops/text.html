@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Loops</title>
+  </head>
+  <body>
+    <h1>Loops</h1>
+    <h2>Times Loop</h2>
+    <p>Sometimes you want to repeat one or more instructions a fixed number of times.  In such situations, you can use Ruby's <code>time</code> loop.  Before entering the code, it often helps to draw a table.  For example, suppose we wanted to count (print the integers) from 1 to 10.  Then our table might look as follows:</p>
+    <table id = "loops-count-example-1">
+      <th>num</th>
+      <tr><td>1</td></tr>
+      <tr><td>2</td></tr>
+      <tr><td>3</td></tr>
+      <tr><td>4</td></tr>
+      <tr><td>5</td></tr>
+      <tr><td>6</td></tr>
+      <tr><td>7</td></tr>
+      <tr><td>8</td></tr>
+      <tr><td>9</td></tr>
+      <tr><td>10</td></tr>
+    </table>
+    <p>Once we've set up the table, we can follow the below four step procedure for determining the code to write:</p>
+    <ul>
+      <li>For each column in the table (only one for this example), we add a variable assignment statement in which we set the variable to the entry in its first row.<br>
+        <pre>num = 1</pre>
+      </li>
+      <li>Count the number of rows (10 for this example) and add a <code>times</code> loop accordingly:
+        <pre>
+        num = 1
+        10.times do
+        
+        end
+        </pre>
+      </li>
+      <li>Update: For each column, determine how the value changes from one row to the next.  Update the variable accordingly <em>inside</em> the loop.  Here we are increasing num by 1 each time (1 &Rarr; 2 &Rarr; 3 &Rarr; 4 &Rarr; ...).</li>
+        <pre>
+        num = 1
+        10.times do
+          num = num + 1
+        end
+        </pre>
+      </li>
+      <li>Output Result(s): Determine how the output is to be displayed.  If we want to print every row of the table as we do for this example, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block.  Since we initialize <var>num</var> to be the value in the first row, we want to print the result before increasing <var>num</var> by 1.  Therefore, our print statement will appear before the update statement as follows:</li>
+        <pre>
+        num = 1
+        10.times do
+          print num
+          puts
+          num = num + 1
+        end
+        </pre>
+    </ul>
+    <p>We will be following a similar procedure for many of the problems that we encounter that we program using loops.
+  </body>
+</html>
