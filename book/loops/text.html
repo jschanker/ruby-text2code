@@ -6,8 +6,8 @@
     <title>Loops</title>
   </head>
   <body>
-    <h1>Loops</h1>
-    <h2>Times Loop</h2>
+<h1>Chapter 4: Loops</h1>
+    <h2>4.1 Times Loops</h2>
     <p>Sometimes you want to repeat one or more instructions a fixed number of times.  In such situations, you can use Ruby's <code>times</code> loop.  Before entering the code, it often helps to draw a table.  For example, suppose we wanted to count (print the integers) from 1 to 10.  Then our table might look as follows:</p>
     <table id = "loops-count-example-1">
       <th>num</th>
@@ -31,11 +31,11 @@
         <pre>
         num = 1
         10.times do
-        
+            
         end
         </pre>
       </li>
-      <li>Update: For each column, determine how the value changes from one row to the next.  Update the variable accordingly <em>inside</em> the loop.  Here we are increasing num by 1 each time (1 &Rarr; 2 &Rarr; 3 &Rarr; 4 &Rarr; ...).</li>
+      <li>Update: For each column, determine how the value changes from one row to the next.  Update the variable accordingly <em>inside</em> the loop.  Here we are increasing num by 1 each time (1 &Rarr; 2 &Rarr; 3 &Rarr; 4 &Rarr; ...).
         <pre>
         num = 1
         10.times do
@@ -43,7 +43,7 @@
         end
         </pre>
       </li>
-      <li>Output Result(s): Determine how the output is to be displayed.  If we want to print every row of the table as we do for this example, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block.  Since we initialize <var>num</var> to be the value in the first row, we want to print the result before increasing <var>num</var> by 1.  Therefore, our print statement will appear before the update statement as follows:</li>
+      <li>Output Result(s): Determine how the output is to be displayed.  If we want to print every row of the table as we do for this example, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block.  Since we initialize <var>num</var> to be the value in the first row, we want to print the result before increasing <var>num</var> by 1.  Therefore, our print statement will appear before the update statement as follows:
         <pre>
         num = 1
         10.times do
@@ -52,9 +52,10 @@
           num = num + 1
         end
         </pre>
+      </li>
     </ul>
     <p>We will be following a similar procedure for many of the problems that we encounter that we program using loops.</p>
-    
+        
     <p>Let's now try writing a program to print the even integers from 4 to 18.  As before, we'll start by drawing a table.
     </p>
     <table id = "loops-count-example-1">
@@ -81,7 +82,7 @@
         end
         </pre>
       </li>
-      <li>Update: This time we are increasing num by 2 each time (4 &Rarr; 6 &Rarr; 8 &Rarr; 10 &Rarr; ...) so we'll update the variable accordingly <em>inside</em> the loop.</li>
+      <li>Update: This time we are increasing num by 2 each time (4 &Rarr; 6 &Rarr; 8 &Rarr; 10 &Rarr; ...) so we'll update the variable accordingly <em>inside</em> the loop.
         <pre>
         num = 4
         8.times do
@@ -89,7 +90,7 @@
         end
         </pre>
       </li>
-      <li>Output Result(s): Finally, we'll determine how to display the output.  Since we again want to print every row of the table, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block as before.  We'll also have our print statement appear before the update statement as follows since we want to start by printing the inital value of <var>num</var>:</li>
+      <li>Output Result(s): Finally, we'll determine how to display the output.  Since we again want to print every row of the table, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block as before.  We'll also have our print statement appear before the update statement as follows since we want to start by printing the inital value of <var>num</var>:
         <pre>
         num = 4
         8.times do
@@ -99,7 +100,18 @@
         end
         </pre>
     </ul>
-    <p>Now see if you can tackle this exercise on your own: Using a <code>times</code> loop, print the numbers -2,3,-4,5,-6,7,-8.
+    <p>Now see if you can tackle these exercises on your own:</p>
+    <ol>
+      <li>Using a <code>times</code> loop, print the numbers 16, 13, 10, 7, 4, 1, -2.</li>
+      <li>Using a <code>times</code> loop, print the numbers 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192</li>
+      <li>Using a <code>times</code> loop, print the numbers -1, 1, -1, 1, -1, 1, -1, 1, -1, 1.</li>
+      <li>* Using a <code>times</code> loop, print the numbers -1, 2, -3, 4, -5, 6, -7, 8, -9, 10.</li>
+    </ol>
+
+    <p>Often people who are new to programming say that they know how to solve a problem, but they can't write the solution with code.  I compare this to the situation in which you are in a country in which people speak a different language from your own.  If you have limited knowledge of the country's native language and you want to be correctly understood, it helps to break down what you want to say into short simple sentences using the vocabulary that you've already learned.</p>
+
+    <p>
+    Let's try to apply this idea to number 4.  Breaking down what we are doing for number 4, we can see that we are counting from 1 to 10, but alternating between negative and positive integers as we do.  We already wrote the code for the first part, and if you were able to write out the solution to number 3, then you've solved the second part as well.  So now let's try to combine these 
     </p>
   </body>
 </html>
