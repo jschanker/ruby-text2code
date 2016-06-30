@@ -8,7 +8,7 @@
   <body>
     <h1>Loops</h1>
     <h2>Times Loop</h2>
-    <p>Sometimes you want to repeat one or more instructions a fixed number of times.  In such situations, you can use Ruby's <code>time</code> loop.  Before entering the code, it often helps to draw a table.  For example, suppose we wanted to count (print the integers) from 1 to 10.  Then our table might look as follows:</p>
+    <p>Sometimes you want to repeat one or more instructions a fixed number of times.  In such situations, you can use Ruby's <code>times</code> loop.  Before entering the code, it often helps to draw a table.  For example, suppose we wanted to count (print the integers) from 1 to 10.  Then our table might look as follows:</p>
     <table id = "loops-count-example-1">
       <th>num</th>
       <tr><td>1</td></tr>
@@ -53,6 +53,53 @@
         end
         </pre>
     </ul>
-    <p>We will be following a similar procedure for many of the problems that we encounter that we program using loops.
+    <p>We will be following a similar procedure for many of the problems that we encounter that we program using loops.</p>
+    
+    <p>Let's now try writing a program to print the even integers from 4 to 18.  As before, we'll start by drawing a table.
+    </p>
+    <table id = "loops-count-example-1">
+      <th>num</th>
+      <tr><td>4</td></tr>
+      <tr><td>6</td></tr>
+      <tr><td>8</td></tr>
+      <tr><td>10</td></tr>
+      <tr><td>12</td></tr>
+      <tr><td>14</td></tr>
+      <tr><td>16</td></tr>
+      <tr><td>18</td></tr>
+    </table>
+    <p>Let's now repeat the below four step procedure for this example to determine the code to write:</p>
+    <ul>
+      <li>As before, we start by adding a variable assignment statement in which we set the variable to the entry in its first row.<br>
+        <pre>num = 4</pre>
+      </li>
+      <li>For this problem, there are 8 rows so we add<code>8.times</code> to our code:
+        <pre>
+        num = 4
+        8.times do
+        
+        end
+        </pre>
+      </li>
+      <li>Update: This time we are increasing num by 2 each time (4 &Rarr; 6 &Rarr; 8 &Rarr; 10 &Rarr; ...) so we'll update the variable accordingly <em>inside</em> the loop.</li>
+        <pre>
+        num = 4
+        8.times do
+          num = num + 2
+        end
+        </pre>
+      </li>
+      <li>Output Result(s): Finally, we'll determine how to display the output.  Since we again want to print every row of the table, we'll add a <code>print</code> statement (followed by a <code>puts</code> statement to add line breaks) inside of the loop block as before.  We'll also have our print statement appear before the update statement as follows since we want to start by printing the inital value of <var>num</var>:</li>
+        <pre>
+        num = 4
+        8.times do
+          print num
+          puts
+          num = num + 2
+        end
+        </pre>
+    </ul>
+    <p>Now see if you can tackle this exercise on your own: Using a <code>times</code> loop, print the numbers -2,3,-4,5,-6,7,-8.
+    </p>
   </body>
 </html>
