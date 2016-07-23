@@ -16,6 +16,7 @@ class Numeric
 	def negative?; self < 0; end
 	def whole?; self.round == self; end
 	def divisible_by?(d); self.modulo(d) == 0; end
+	def factor_of?(m); m.divisible_by?(self); end
 	def prime?
 		return false if !self.whole? || self <= 1
 		for d in 2..Math.sqrt(self) do
@@ -308,6 +309,7 @@ module Text2Code
 	inst_set.add_instruction_schema([{:divide => :message}, {:variable_ => :receiver}, {:by => :optional}, :argument], :divide)
 
 	inst_set.add_instruction_schema([{:variable_ => :receiver}, {:is => :optional}, {:divisible => :message}, {:by => :optional}, :argument] , :divisible_by?)
+	inst_set.add_instruction_schema([{:variable_ => :receiver}, {:is => :optional}, {:factor => :message}, {:of => :optional}, :argument] , :factor_of?)
 	inst_set.add_instruction_schema([{:remainder => :message}, {:of => :optional}, {:variable_ => :receiver}, {:divided => :message}, {:by => :optional}, :argument] , :modulo)
 
 	inst_set.add_instruction_schema([{:absolute => :message}, {:of => :optional}, :argument], :abs) #receiver later
