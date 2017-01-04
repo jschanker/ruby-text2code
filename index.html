@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Text 2 Code</title>
+    <link rel = "stylesheet" href = "styles.css">
+    <script src="blockly/blockly_compressed.js"></script>
+    <script src="blockly/blocks_compressed.js"></script>
+    <!--<script src="blockly/javascript_compressed.js"></script>
+    <script src="blockly/python_compressed.js"></script>-->
+    <script src="blockly/msg/js/en.js"></script>
+    <script src="time_blocks.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><span id = "textHeader">Text</span> <span id = "twoHeader">2</span> <span id = "codeTextHeader">Code</span></h1>
+    </header>
+    <div id = "blockly-div" style = "margin-right: 5%;">
+      <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+        <block type="num_of_minutes"></block>
+        <block type="num_of_hours_in_minutes"></block>
+        <block type="num_of_days"></block>
+        <block type="num_remaining_seconds_after_minutes"></block>
+        <block type="num_of_remaining_minutes_after_hours_removed"></block>
+        <block type="num_of_remaining_hours_after_days"></block>
+      </xml>
+    </div>
+    <footer>
+       <h3><em>If you can describe the solution, you can code it. (At least that's the goal.)</em></h3>
+    </footer>
+    <div id = "repl">
+      <div><span class = "tab-text">repl.it</span></div>
+      <!--<iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>-->
+      <iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>
+    </div>
+    <script src = "workspace1.js"></script>
+  </body>
+</html>
