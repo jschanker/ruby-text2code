@@ -10,7 +10,7 @@
     <!--<script src="blockly/javascript_compressed.js"></script>
     <script src="blockly/python_compressed.js"></script>-->
     <script src="blockly/msg/js/en.js"></script>
-    <script src="time_blocks.js"></script>
+    <script src="blockly/blocks/time_blocks.js"></script>
   </head>
   <body>
     <header>
@@ -26,6 +26,10 @@
         <block type="num_of_remaining_hours_after_days"></block>
       </xml>
     </div>
+    <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
+    <div id = "text-code">
+        Code to appear here.
+    </div>
     <footer>
        <h3><em>If you can describe the solution, you can code it. (At least that's the goal.)</em></h3>
     </footer>
@@ -35,5 +39,6 @@
       <iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>
     </div>
     <script src = "workspace1.js"></script>
+    <script src = "ruby-text.js"></script>
   </body>
 </html>
