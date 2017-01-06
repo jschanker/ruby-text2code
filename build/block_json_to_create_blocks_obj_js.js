@@ -1,7 +1,7 @@
 var fs = require("fs");
 var block_json_file_path = "../blockly/blocks/blocks.json";
-var get_blocks_function_template_file_path = "../blockly/blocks/get_blocks_function_template.txt";
-var block_assignment_template_file_path = "../blockly/blocks/block_assignment_template.txt";
+var get_blocks_function_template_file_path = "../get_blocks_function_template.txt";
+var block_assignment_template_file_path = "../block_assignment_template.txt";
 
 fs.readFile(block_json_file_path, "utf8", function(error, json) {
   fs.readFile(get_blocks_function_template_file_path, "utf8", function(error, function_text) {

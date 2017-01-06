@@ -4,6 +4,10 @@ function createText(xmlDoc, root) {
     var blocks = getBlockObjects();
     var text = "";
     
+    if(root && root.nodeName === "field") {
+      text = root.innerText;
+    }
+    
     for(var i = 0; i < root.children.length; i++) {
         var child = root.children[i];
         if(child.nodeName === "block") {

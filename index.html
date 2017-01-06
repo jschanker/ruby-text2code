@@ -17,14 +17,36 @@
       <h1><span id = "textHeader">Text</span> <span id = "twoHeader">2</span> <span id = "codeTextHeader">Code</span></h1>
     </header>
     <div id = "blockly-div" style = "margin-right: 5%;">
-      <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-        <block type="num_of_minutes"></block>
-        <block type="num_of_hours_in_minutes"></block>
-        <block type="num_of_days"></block>
-        <block type="num_remaining_seconds_after_minutes"></block>
-        <block type="num_of_remaining_minutes_after_hours_removed"></block>
-        <block type="num_of_remaining_hours_after_days"></block>
-      </xml>
+        <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+          <category name="Time Conversions" colour="#5b6da5">
+            <block type="time_number">
+              <field name="NUM">0</field>
+            </block>
+            <block type="seconds_to_minutes"></block>
+            <block type="minutes_to_hours"></block>
+            <block type="hours_to_days"></block>
+            <block type="remaining_seconds"></block>
+            <block type="remaining_minutes"></block>
+            <block type="remaining_hours"></block>
+          </category>
+          <category name="Time Variables" colour="#a55b6d">
+            <block type="seconds_variable_set">
+              <field name="VAR">item</field>
+            </block>
+            <block type="minutes_variable_set">
+              <field name="VAR">item</field>
+            </block>
+            <block type="hours_variable_set">
+              <field name="VAR">item</field>
+            </block>
+            <block type="days_variable_set">
+              <field name="VAR">item</field>
+            </block>
+            <block type="variables_get">
+              <field name="VAR">item</field>
+            </block>
+          </category>
+        </xml>
     </div>
     <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
     <div id = "text-code">

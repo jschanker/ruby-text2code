@@ -1,1 +1,1 @@
-  blocks['{{type}}'] = $block;
+  blocks['{{type}}'] = {{$block}};
