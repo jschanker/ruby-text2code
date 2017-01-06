@@ -1,0 +1,7 @@
+function getBlockObjects() {
+  var blocks = {};
+
+  {{block-code}}
+
+  return blocks;
+}
