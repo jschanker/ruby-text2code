@@ -191,4 +191,213 @@
   "colour": 330,
   "tooltip": "",
   "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "pennies_to_nickels",
+  "message0": "pennies_to_nickels( %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "PENNIES",
+      "check": "pennies"
+    }
+  ],
+  "output": "nickels",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "nickels_to_quarters",
+  "message0": "nickels_to_quarters %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NICKELS",
+      "check": "nickels"
+    }
+  ],
+  "output": "quarters",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "quarters_to_dollars",
+  "message0": "quarters_to_dollars %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "QUARTERS",
+      "check": "quarters"
+    }
+  ],
+  "output": "dollars",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "remaining_pennies",
+  "message0": "remaining_pennies_after_nickels_removed( %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "PENNIES",
+      "check": "pennies"
+    }
+  ],
+  "output": "pennies",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "remaining_nickels",
+  "message0": "remaining_nickels_after_quarters_removed( %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NICKELS",
+      "check": "nickels"
+    }
+  ],
+  "output": "nickels",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "remaining_quarters",
+  "message0": "remaining_quarters_after_dollars_removed( %1 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "QUARTERS",
+      "check": "quarters"
+    }
+  ],
+  "output": "quarters",
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "pennies_variable_set",
+  "message0": "set %1 to %2 .pennies",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "pennies"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "nickels_variable_set",
+  "message0": "set %1 to %2 .nickels",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "nickels"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "quarters_variable_set",
+  "message0": "set %1 to %2 .quarters",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "quarters"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "dollars_variable_set",
+  "message0": "set %1 to %2 .dollars",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "dollars"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "currency_number",
+  "message0": "%1",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": [
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "units_print",
+  "message0": "print %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "TEXT"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
 }]

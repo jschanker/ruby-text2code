@@ -59,10 +59,28 @@ function createText(xmlDoc, root) {
     return text;
 }
 
+function runCodeAndTestFunctions() {
+  window.LoopTrap = 1000;
+  Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
+  var code = Blockly.JavaScript.workspaceToCode();
+  try {
+    eval(code);
+  } catch(e) {
+    if(e.toString().indexOf("Reference") != -1) {
+      alert(e.toString() + "\nMake sure variables are defined before they're used.  Variables defined inside of the function will not be available outside of it.");
+    } else {
+      alert(e.toString());
+    }
+  }
+}
+
 document.getElementById("convert-to-ruby-text-btn").addEventListener("click", function() {
   var xmlDom = Blockly.Xml.workspaceToDom(workspace);
   var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(xmlText, "text/xml");
   textField.innerText = createText(xmlDoc, xmlDoc.querySelector("xml"));
+  textField.innerText += "\n\n" + Blockly.JavaScript.workspaceToCode();
+  eval(Blockly.JavaScript.workspaceToCode());
+  //alert(s);
 });
