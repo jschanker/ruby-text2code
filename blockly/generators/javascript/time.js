@@ -26,7 +26,7 @@ function convert(fromType, toType, conversionFactor, units) {
     throw new Error("Mismatched types in conversion.");
   } else {
     var quantity = units instanceof Unit ? units.toInteger() : units;
-    return new Unit(quantity / conversionFactor, toType);
+    return new Unit(Math.floor(quantity / conversionFactor), toType);
   }
 }
 
