@@ -4,7 +4,11 @@ function Unit(quantity, type) {
 }
 
 Unit.prototype.toString = function() {
-  return this._quantity;
+  return this._quantity + " " + this._type;
+};
+
+Unit.prototype.toInteger = function() {
+  return Math.floor(this._quantity || 0);
 };
 
 function setToUnits(units, toType) {
@@ -21,7 +25,8 @@ function convert(fromType, toType, conversionFactor, units) {
     alert("Error: Expected input to " + fromType + "_to_" + toType + " to have units in " + fromType + " but function received input with units in " + units._type + " instead.");
     throw new Error("Mismatched types in conversion.");
   } else {
-    return new Unit(Math.floor(parseInt(units.toString()) / conversionFactor), toType);
+    var quantity = units instanceof Unit ? units.toInteger() : units;
+    return new Unit(quantity / conversionFactor, toType);
   }
 }
 
@@ -30,7 +35,8 @@ function getRemainingAfterConvert(fromType, toType, conversionFactor, units) {
     alert("Error: Expected input to remaining_" + fromType + "_after_" + toType + "_removed to have units in " + fromType + " but function received input with units in " + units._type + " instead.");
     throw new Error("Mismatched types in conversion.");
   } else {
-    return new Unit(parseInt(units.toString()) % conversionFactor, fromType);
+    var quantity = units instanceof Unit ? units.toInteger() : units;
+    return new Unit(quantity % conversionFactor, fromType);
   }
 }
 
