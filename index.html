@@ -17,101 +17,175 @@
     <header>
       <h1><span id = "textHeader">Text</span> <span id = "twoHeader">2</span> <span id = "codeTextHeader">Code</span></h1>
     </header>
-    <div id = "blockly-div" style = "margin-right: 5%;">
-      <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-          <category name="Time Conversions" colour="#5b6da5">
-            <block type="time_number">
-              <field name="NUM">0</field>
-            </block>
-            <block type="seconds_to_minutes"></block>
-            <block type="minutes_to_hours"></block>
-            <block type="hours_to_days"></block>
-            <block type="remaining_seconds"></block>
-            <block type="remaining_minutes"></block>
-            <block type="remaining_hours"></block>
-          </category>
-          <category name="Time Variables" colour="#a55b6d">
-            <block type="seconds_variable_set">
-              <field name="VAR">num_of_seconds</field>
-            </block>
-            <block type="minutes_variable_set">
-              <field name="VAR">num_of_minutes</field>
-            </block>
-            <block type="hours_variable_set">
-              <field name="VAR">num_of_hours</field>
-            </block>
-            <block type="days_variable_set">
-              <field name="VAR">num_of_days</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_seconds</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_minutes</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_hours</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_days</field>
-            </block>
-          </category>
-          <category name="Currency Conversions" colour="#5ba55b">
-            <block type="currency_number">
-              <field name="NUM">0</field>
-            </block>
-            <block type="pennies_to_nickels"></block>
-            <block type="nickels_to_quarters"></block>
-            <block type="quarters_to_dollars"></block>
-            <block type="remaining_pennies"></block>
-            <block type="remaining_nickels"></block>
-            <block type="remaining_quarters"></block>
-          </category>
-          <category name="Currency Variables" colour="#a55b6d">
-            <block type="pennies_variable_set">
-              <field name="VAR">num_of_pennies</field>
-            </block>
-            <block type="nickels_variable_set">
-              <field name="VAR">num_of_nickels</field>
-            </block>
-            <block type="quarters_variable_set">
-              <field name="VAR">num_of_quarters</field>
-            </block>
-            <block type="dollars_variable_set">
-              <field name="VAR">num_of_dollars</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_pennies</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_nickels</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_quarters</field>
-            </block>
-            <block type="variables_get">
-              <field name="VAR">num_of_dollars</field>
-            </block>
-          </category>
-          <category name="Output" colour="#5ba5a5">
-            <block type="units_print"></block>
-          </category>
-        </xml>
+    <div id = "spreadsheet-container">
+      <div><span class = "tab-text tab-text-left">Spreadsheet</span></div>
+      <form>
+        <table id = "spreadsheet">
+        </table>
+      </form>
     </div>
-    <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
-    <div id = "text-code" style = "margin-right: 5%;">
-        Code to appear here.
+    <div id = "all-content">
+        <div id = "blockly-div">
+          <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="Time Conversions" colour="#5b6da5">
+                <block type="time_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="seconds_to_minutes"></block>
+                <block type="minutes_to_hours"></block>
+                <block type="hours_to_days"></block>
+                <block type="remaining_seconds"></block>
+                <block type="remaining_minutes"></block>
+                <block type="remaining_hours"></block>
+              </category>
+              <category name="Time Variables" colour="#a55b6d">
+                <block type="seconds_variable_set">
+                  <field name="VAR">num_of_seconds</field>
+                </block>
+                <block type="minutes_variable_set">
+                  <field name="VAR">num_of_minutes</field>
+                </block>
+                <block type="hours_variable_set">
+                  <field name="VAR">num_of_hours</field>
+                </block>
+                <block type="days_variable_set">
+                  <field name="VAR">num_of_days</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_seconds</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_minutes</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_hours</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_days</field>
+                </block>
+              </category>
+              <category name="Currency Conversions" colour="#5ba55b">
+                <block type="currency_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="pennies_to_nickels"></block>
+                <block type="nickels_to_quarters"></block>
+                <block type="quarters_to_dollars"></block>
+                <block type="remaining_pennies"></block>
+                <block type="remaining_nickels"></block>
+                <block type="remaining_quarters"></block>
+              </category>
+              <category name="Currency Variables" colour="#a55b6d">
+                <block type="pennies_variable_set">
+                  <field name="VAR">num_of_pennies</field>
+                </block>
+                <block type="nickels_variable_set">
+                  <field name="VAR">num_of_nickels</field>
+                </block>
+                <block type="quarters_variable_set">
+                  <field name="VAR">num_of_quarters</field>
+                </block>
+                <block type="dollars_variable_set">
+                  <field name="VAR">num_of_dollars</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_pennies</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_nickels</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_quarters</field>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR">num_of_dollars</field>
+                </block>
+              </category>
+              <category name="Output" colour="#5ba5a5">
+                <block type="units_print"></block>
+              </category>
+            </xml>
+        </div>
+        <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
+        <div id = "text-code">
+            Code to appear here.
+        </div>
     </div>
     <footer>
-       <h3><em>If you can describe the solution, you can code it. (At least that's the goal.)</em></h3>
+        <h3><em>If you can describe the solution, you can code it. (At least that's the goal.)</em></h3>
     </footer>
     <div id = "repl">
-      <div><span class = "tab-text">repl.it</span></div>
+      <div><span class = "tab-text tab-text-right">repl.it</span></div>
       <!--<iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>-->
-      <iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>
+      <!--<iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>-->
+      
     </div>
     <script src = "workspace1.js"></script>
     <script src = "get_blocks.js"></script>
     <script src = "ruby-text.js"></script>
+    <script>
+      var NUM_OF_COLS = 10;
+      var NUM_OF_ROWS = 16;
+      
+      var COLS = "ABCDEFGHIJ";
+      var table = document.getElementById("spreadsheet");
+      var tr = document.createElement("tr");
+      tr.appendChild(document.createElement("td"));
+      for(var col = 0; col < NUM_OF_COLS; col++) {
+        var td = document.createElement("td");
+        td.className = "cell-heading";
+        //td.classList.add("cell-heading");
+        td.innerText = COLS[col];
+        tr.appendChild(td);
+      }
+      
+      spreadsheet.appendChild(tr);
+      
+      var trResult = document.createElement("tr");
+      var td = document.createElement("td");
+      //td.classList.add("cell-result-heading");
+      td.className = "cell-result-heading";
+      td.innerText = "R";
+      trResult.appendChild(td);
+        
+      for(var col = 0; col < NUM_OF_COLS; col++) {
+        var td = document.createElement("td");
+        td.className = "cell-result";
+        td.id = "R" + COLS[col];
+        //td.classList.add("cell-result");
+        td.innerText = "R" + COLS[col];
+        trResult.appendChild(td);
+      }
+      
+      for(var row = 1; row < NUM_OF_ROWS; row++) {
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        //td.classList.add("cell-heading");
+        td.className = "cell-heading";
+        td.innerText = row;
+        tr.appendChild(td);
+        
+        for(var col = 0; col < NUM_OF_COLS; col++) {
+          var td = document.createElement("td");
+          var inputCell = document.createElement("input");
+          inputCell.id = COLS[col] + row;
+          COLS.split("").forEach(function(letter) {
+            console.log("R" + letter);
+            inputCell.addEventListener("click", function() {
+              document.getElementById("R" + letter).innerText = "CHANGED";
+            });
+          });
+          
+          //inputCell.value = inputCell.id;
+          td.appendChild(inputCell);
+          tr.appendChild(td);
+        }
+        
+        spreadsheet.appendChild(tr);
+        
+      }
+        
+      spreadsheet.appendChild(trResult);
+    </script>
   </body>
 </html>

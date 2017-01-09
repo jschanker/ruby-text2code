@@ -60,6 +60,10 @@ header {
   height: 500px;
 }
 
+#all-content {
+    margin: 0.5% 5.5%;
+}
+
 
 #twoHeader {
 	background-color: #aaa;
@@ -77,6 +81,28 @@ footer {
 	background-color:#292929;
 }
 
+#spreadsheet-container {
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  margin-left:-95%;
+  position: fixed;
+  /*border-right: 40px solid rgba(230, 230, 230, 0.7);*/
+  transition: 1s;
+  background-color: #888;
+  text-align: right;
+  z-index: 1;
+  overflow:auto;
+  /*background-color: black;*/
+}
+
+#spreadsheet-container:hover {
+  margin-left:0%;
+  z-index: 2;
+  transition: 1s;
+}
+
 #repl {
   top:0;
   left:0;
@@ -92,8 +118,8 @@ footer {
 
 .tab-text {
     font-weight: bold;
-    padding: 70px 0 0 0;
-    margin-left: -90px;
+    /*padding: 70px 0 0 0;
+    margin-left: -90px;*/
     -webkit-transform:rotate(270deg);
     -moz-transform:rotate(270deg);
     -o-transform:rotate(270deg);
@@ -103,9 +129,58 @@ footer {
     display: inline-block;
 }
 
+.tab-text-left {
+    padding-top: 128px;
+    margin-right: 27px;
+    /*
+    -webkit-transform:rotate(270deg) translate(-100%, 0);
+    -moz-transform:rotate(270deg) translate(-100%, 0);
+    -o-transform:rotate(270deg) translate(-100%, 0);
+    -ms-transform:rotate(270deg) translate(-100%, 0);
+    transform:rotate(270deg) translate(-100%, 0);
+    */
+}
+
+.tab-text-right {
+    padding: 70px 0 0 0;
+    margin-left: -90px;
+    /*
+    -webkit-transform:rotate(270deg) translate(-70px, -45px);
+    -moz-transform:rotate(270deg) translate(-70px, -45px);
+    -o-transform:rotate(270deg) translate(-70px, -45px);
+    -ms-transform:rotate(270deg) translate(-70px, -45px);
+    transform:rotate(270deg) translate(-70px, -45px);
+    */
+}
+
+table#spreadsheet {
+  margin-top:-90px;
+  margin-left:10px;
+  border: 1px solid gray;
+  border-spacing: 5px;;
+  background-color: white;
+}
+
+table#spreadsheet td {
+    text-align: center;
+}
+
+table#spreadsheet input {
+  text-align: right;
+}
+
+.cell-heading {
+  background-color: #c0c0c0;
+}
+
+.cell-result-heading, .cell-result {
+  background-color: #ffff00;
+}
+
 #repl:hover {
   margin-left:0%;
   transition: 1s;
+  z-index: 2;
 }
 
 iframe {
