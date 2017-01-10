@@ -209,7 +209,7 @@
 },
 {
   "type": "nickels_to_quarters",
-  "message0": "nickels_to_quarters %1 )",
+  "message0": "nickels_to_quarters( %1 )",
   "args0": [
     {
       "type": "input_value",
@@ -224,7 +224,7 @@
 },
 {
   "type": "quarters_to_dollars",
-  "message0": "quarters_to_dollars %1 )",
+  "message0": "quarters_to_dollars( %1 )",
   "args0": [
     {
       "type": "input_value",
