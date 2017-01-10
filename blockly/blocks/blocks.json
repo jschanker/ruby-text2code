@@ -400,4 +400,196 @@
   "colour": 160,
   "tooltip": "",
   "helpUrl": ""
+},
+{
+  "type": "print_in_result_cell",
+  "message0": "print %1 .in result cell %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "EXP"
+    },
+    {
+      "type": "input_value",
+      "name": "CELL",
+      "check": "result_cell"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "result_cell_column",
+  "message0": "R %1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "COL",
+      "options": [
+        [
+          "A",
+          "A"
+        ],
+        [
+          "B",
+          "B"
+        ],
+        [
+          "C",
+          "C"
+        ],
+        [
+          "D",
+          "D"
+        ],
+        [
+          "E",
+          "E"
+        ],
+        [
+          "F",
+          "F"
+        ],
+        [
+          "G",
+          "G"
+        ],
+        [
+          "H",
+          "H"
+        ],
+        [
+          "I",
+          "I"
+        ],
+        [
+          "J",
+          "J"
+        ]
+      ]
+    }
+  ],
+  "output": "result_cell",
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "input_cell",
+  "message0": "%1 %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "COL",
+      "options": [
+        [
+          "A",
+          "A"
+        ],
+        [
+          "B",
+          "B"
+        ],
+        [
+          "C",
+          "C"
+        ],
+        [
+          "D",
+          "D"
+        ],
+        [
+          "E",
+          "E"
+        ],
+        [
+          "F",
+          "F"
+        ],
+        [
+          "G",
+          "G"
+        ],
+        [
+          "H",
+          "H"
+        ],
+        [
+          "I",
+          "I"
+        ],
+        [
+          "J",
+          "J"
+        ]
+      ]
+    },
+    {
+      "type": "field_number",
+      "name": "ROW",
+      "value": 1,
+      "min": 1,
+      "max": 15
+    }
+  ],
+  "output": [
+    "Number",
+    "input_cell",
+    "seconds",
+    "minutes",
+    "hours",
+    "days",
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "prompt_for_number",
+  "message0": "prompt_for_number_with_message(\" %1 \")",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "TEXT",
+      "text": "Enter number: "
+    }
+  ],
+  "output": [
+    "Number",
+    "input_cell",
+    "seconds",
+    "minutes",
+    "hours",
+    "days",
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "variables_get",
+  "message0": "%1",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    }
+  ],
+  "output": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
 }]

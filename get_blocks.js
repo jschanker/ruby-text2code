@@ -1,7 +1,7 @@
 function getBlockObjects() {
   var blocks = {};
 
-  blocks['seconds_to_minutes'] = {"type":"seconds_to_minutes","message0":"seconds_to_minutes( %1 )","args0":[{"type":"input_value","name":"SECONDS","check":"seconds"}],"output":"minutes","colour":230,"tooltip":"","helpUrl":"http://www.example.com/"};
+    blocks['seconds_to_minutes'] = {"type":"seconds_to_minutes","message0":"seconds_to_minutes( %1 )","args0":[{"type":"input_value","name":"SECONDS","check":"seconds"}],"output":"minutes","colour":230,"tooltip":"","helpUrl":"http://www.example.com/"};
   blocks['minutes_to_hours'] = {"type":"minutes_to_hours","message0":"minutes_to_hours( %1 )","args0":[{"type":"input_value","name":"MINUTES","check":"minutes"}],"output":"hours","colour":230,"tooltip":"","helpUrl":"http://www.example.com/"};
   blocks['hours_to_days'] = {"type":"hours_to_days","message0":"hours_to_days( %1 )","args0":[{"type":"input_value","name":"HOURS","check":"hours"}],"output":"days","colour":230,"tooltip":"","helpUrl":"http://www.example.com/"};
   blocks['remaining_seconds'] = {"type":"remaining_seconds","message0":"remaining_seconds_after_minutes_removed( %1 )","args0":[{"type":"input_value","name":"SECONDS","check":"seconds"}],"output":"seconds","colour":230,"tooltip":"","helpUrl":"http://www.example.com/"};
@@ -13,8 +13,8 @@ function getBlockObjects() {
   blocks['hours_variable_set'] = {"type":"hours_variable_set","message0":"set %1 to %2 .hours","args0":[{"type":"field_variable","name":"VAR","variable":"item"},{"type":"input_value","name":"VALUE","check":"hours"}],"previousStatement":null,"nextStatement":null,"colour":330,"tooltip":"","helpUrl":"http://www.example.com/"};
   blocks['days_variable_set'] = {"type":"days_variable_set","message0":"set %1 to %2 .days","args0":[{"type":"field_variable","name":"VAR","variable":"item"},{"type":"input_value","name":"VALUE","check":"days"}],"previousStatement":null,"nextStatement":null,"colour":330,"tooltip":"","helpUrl":"http://www.example.com/"};
   blocks['pennies_to_nickels'] = {"type":"pennies_to_nickels","message0":"pennies_to_nickels( %1 )","args0":[{"type":"input_value","name":"PENNIES","check":"pennies"}],"output":"nickels","colour":120,"tooltip":"","helpUrl":""};
-  blocks['nickels_to_quarters'] = {"type":"nickels_to_quarters","message0":"nickels_to_quarters( %1 )","args0":[{"type":"input_value","name":"NICKELS","check":"nickels"}],"output":"quarters","colour":120,"tooltip":"","helpUrl":""};
-  blocks['quarters_to_dollars'] = {"type":"quarters_to_dollars","message0":"quarters_to_dollars( %1 )","args0":[{"type":"input_value","name":"QUARTERS","check":"quarters"}],"output":"dollars","colour":120,"tooltip":"","helpUrl":""};
+  blocks['nickels_to_quarters'] = {"type":"nickels_to_quarters","message0":"nickels_to_quarters %1 )","args0":[{"type":"input_value","name":"NICKELS","check":"nickels"}],"output":"quarters","colour":120,"tooltip":"","helpUrl":""};
+  blocks['quarters_to_dollars'] = {"type":"quarters_to_dollars","message0":"quarters_to_dollars %1 )","args0":[{"type":"input_value","name":"QUARTERS","check":"quarters"}],"output":"dollars","colour":120,"tooltip":"","helpUrl":""};
   blocks['remaining_pennies'] = {"type":"remaining_pennies","message0":"remaining_pennies_after_nickels_removed( %1 )","args0":[{"type":"input_value","name":"PENNIES","check":"pennies"}],"output":"pennies","colour":120,"tooltip":"","helpUrl":""};
   blocks['remaining_nickels'] = {"type":"remaining_nickels","message0":"remaining_nickels_after_quarters_removed( %1 )","args0":[{"type":"input_value","name":"NICKELS","check":"nickels"}],"output":"nickels","colour":120,"tooltip":"","helpUrl":""};
   blocks['remaining_quarters'] = {"type":"remaining_quarters","message0":"remaining_quarters_after_dollars_removed( %1 )","args0":[{"type":"input_value","name":"QUARTERS","check":"quarters"}],"output":"quarters","colour":120,"tooltip":"","helpUrl":""};
@@ -24,8 +24,11 @@ function getBlockObjects() {
   blocks['dollars_variable_set'] = {"type":"dollars_variable_set","message0":"set %1 to %2 .dollars","args0":[{"type":"field_variable","name":"VAR","variable":"item"},{"type":"input_value","name":"VALUE","check":"dollars"}],"previousStatement":null,"nextStatement":null,"colour":330,"tooltip":"","helpUrl":""};
   blocks['currency_number'] = {"type":"currency_number","message0":"%1","args0":[{"type":"field_number","name":"NUM","value":0}],"output":["pennies","nickels","quarters","dollars"],"colour":120,"tooltip":"","helpUrl":""};
   blocks['units_print'] = {"type":"units_print","message0":"print %1","args0":[{"type":"input_value","name":"TEXT"}],"previousStatement":null,"nextStatement":null,"colour":160,"tooltip":"","helpUrl":""};
-
-  blocks['variables_get'] = {"type": "variables_get","message0": "%1","args0": [{"type": "field_variable","name": "VAR","variable": "item"}],"output": null,"colour": 330,"tooltip": "","helpUrl": "http://www.example.com/"};
+  blocks['print_in_result_cell'] = {"type":"print_in_result_cell","message0":"print %1 .in result cell %2","args0":[{"type":"input_value","name":"EXP"},{"type":"input_value","name":"CELL","check":"result_cell"}],"inputsInline":true,"previousStatement":null,"nextStatement":null,"colour":160,"tooltip":"","helpUrl":""};
+  blocks['result_cell_column'] = {"type":"result_cell_column","message0":"R %1","args0":[{"type":"field_dropdown","name":"COL","options":[["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"]]}],"output":"result_cell","colour":160,"tooltip":"","helpUrl":""};
+  blocks['input_cell'] = {"type":"input_cell","message0":"%1 %2","args0":[{"type":"field_dropdown","name":"COL","options":[["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"]]},{"type":"field_number","name":"ROW","value":1,"min":1,"max":15}],"output":["Number","input_cell","seconds","minutes","hours","days","pennies","nickels","quarters","dollars"],"colour":160,"tooltip":"","helpUrl":""};
+  blocks['prompt_for_number'] = {"type":"prompt_for_number","message0":"prompt_for_number_with_message(\" %1 \")","args0":[{"type":"field_input","name":"TEXT","text":"Enter number: "}],"output":["Number","input_cell","seconds","minutes","hours","days","pennies","nickels","quarters","dollars"],"colour":160,"tooltip":"","helpUrl":""};
+  blocks['variables_get'] = {"type":"variables_get","message0":"%1","args0":[{"type":"field_variable","name":"VAR","variable":"item"}],"output":null,"colour":330,"tooltip":"","helpUrl":"http://www.example.com/"};
 
   return blocks;
 }

@@ -103,6 +103,16 @@ footer {
   transition: 1s;
 }
 
+#spreadsheet-container:hover .tab-container * {
+  /*border: 2px solid red;*/
+  display: none;
+}
+
+#spreadsheet-container:hover table#spreadsheet {
+  /*border: 2px solid red;*/
+  margin-top:56px;
+}
+
 #repl {
   top:0;
   left:0;
@@ -157,7 +167,7 @@ table#spreadsheet {
   margin-top:-90px;
   margin-left:10px;
   border: 1px solid gray;
-  border-spacing: 5px;;
+  border-spacing: 5px;
   background-color: white;
 }
 

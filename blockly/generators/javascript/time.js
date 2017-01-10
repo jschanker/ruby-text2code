@@ -251,3 +251,61 @@ Blockly.JavaScript['units_print'] = function(block) {
   var msg = msg instanceof Unit ? msg + " " + msg._units : msg;
   return 'window.alert(' + msg + ');\n';
 };
+
+Blockly.JavaScript['print_in_result_cell'] = function(block) {
+  var value_exp = Blockly.JavaScript.valueToCode(block, 'EXP', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_cell = Blockly.JavaScript.valueToCode(block, 'CELL', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code;
+  //alert("VALUE: " + document.getElementById(value_cell.substring(1,value_cell.length-1)));
+  if(document.getElementById(value_cell)) {
+    //alert("VALUE: " + typeof value_cell + document.getElementById(value_cell));
+    //alert(value_exp);
+    //code = 'document.getElementById("' + value_cell + '").value = ' + value_exp + ';\n';
+    code = 'document.getElementById("' + value_cell + '").innerText = ' + value_exp + ';\n';
+  //if(value_cell && value_cell.innerText) {
+  //  code = 'value_cell.innerText = ' + value_exp + ';\n';
+  } else {
+    code = 'window.alert(' + value_exp + ');\n';
+  }
+  
+  return code;
+};
+
+Blockly.JavaScript['result_cell_column'] = function(block) {
+  var dropdown_col = block.getFieldValue('COL');
+  // TODO: Assemble JavaScript into code variable.
+  //var cell = document.getElementById("R" + dropdown_col);
+  //var code = cell ? cell : "";
+  //var code = "'R" + dropdown_col + "'";
+  //var code = Blockly.JavaScript.quote_("R" + dropdown_col);
+  //var code = "Formula-R" + dropdown_col;
+  var code = "R" + dropdown_col;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['input_cell'] = function(block) {
+  var dropdown_col = block.getFieldValue('COL');
+  var number_row = block.getFieldValue('ROW');
+  // TODO: Assemble JavaScript into code variable.
+  var cell = dropdown_col + number_row;
+  var cell_val = document.getElementById(cell);
+  var code;
+  
+  if(cell_val) {
+    code = parseInt(cell_val.value) || 0;
+  } else {
+    code = parseInt(prompt("Enter number", 0)) || 0;
+  }
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['prompt_for_number'] = function(block) {
+  var text_text = block.getFieldValue('TEXT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'parseInt(window.prompt("' + text_text + '"))';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};

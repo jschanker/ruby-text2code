@@ -18,8 +18,8 @@
       <h1><span id = "textHeader">Text</span> <span id = "twoHeader">2</span> <span id = "codeTextHeader">Code</span></h1>
     </header>
     <div id = "spreadsheet-container">
-      <div><span class = "tab-text tab-text-left">Spreadsheet</span></div>
-      <form>
+      <div class = "tab-container"><span class = "tab-text tab-text-left">Spreadsheet</span></div>
+      <form id = "spreadsheet-form">
         <table id = "spreadsheet">
         </table>
       </form>
@@ -101,8 +101,12 @@
                   <field name="VAR">num_of_dollars</field>
                 </block>
               </category>
-              <category name="Output" colour="#5ba5a5">
+              <category name="Input/Output" colour="#5ba5a5">
+                <block type="result_cell_column"></block>
+                <block type="input_cell"></block>
                 <block type="units_print"></block>
+                <block type="print_in_result_cell"></block>
+                <block type="prompt_for_number"></block>
               </category>
             </xml>
         </div>
@@ -117,7 +121,7 @@
     <div id = "repl">
       <div><span class = "tab-text tab-text-right">repl.it</span></div>
       <!--<iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>-->
-      <iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>
+      <!--<iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>-->
       
     </div>
     <script src = "workspace1.js"></script>
@@ -150,6 +154,11 @@
         
       for(var col = 0; col < NUM_OF_COLS; col++) {
         var td = document.createElement("td");
+        var formulaField = document.createElement("input");
+        formulaField.type = "hidden";
+        formulaField.id = "Formula-R" + COLS[col];
+        formulaField.value = "\'\'";
+        document.getElementById("spreadsheet-form").appendChild(formulaField); 
         td.className = "cell-result";
         td.id = "R" + COLS[col];
         //td.classList.add("cell-result");
@@ -169,12 +178,14 @@
           var td = document.createElement("td");
           var inputCell = document.createElement("input");
           inputCell.id = COLS[col] + row;
+          inputCell.addEventListener("change", runCodeAndTestFunctions);
+          /*
           COLS.split("").forEach(function(letter) {
             console.log("R" + letter);
             inputCell.addEventListener("click", function() {
-              document.getElementById("R" + letter).innerText = "CHANGED";
+              document.getElementById("R" + letter).innerText = eval(document.getElementById("Formula-R" + letter).value);
             });
-          });
+          });*/
           
           //inputCell.value = inputCell.id;
           td.appendChild(inputCell);

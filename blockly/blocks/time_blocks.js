@@ -338,3 +338,58 @@ Blockly.Blocks['units_print'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['input_cell'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["E","E"], ["F","F"], ["G","G"], ["H","H"], ["I","I"], ["J","J"]]), "COL")
+        .appendField(new Blockly.FieldNumber(1, 1, 15), "ROW");
+    this.setOutput(true, ["Number", "seconds", "minutes", "hours", "days", 
+                          "pennies", "nickels", "quarters", "dollars", "input_cell"]);
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['print_in_result_cell'] = {
+  init: function() {
+    this.appendValueInput("EXP")
+        .setCheck(null)
+        .appendField("print");
+    this.appendValueInput("CELL")
+        .setCheck("result_cell")
+        .appendField(".in result cell");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['result_cell_column'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("R")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["E","E"], ["F","F"], ["G","G"], ["H","H"], ["I","I"], ["J","J"]]), "COL");
+    this.setOutput(true, "result_cell");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['prompt_for_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("prompt_for_number_with_message(\"")
+        .appendField(new Blockly.FieldTextInput("Enter number: "), "TEXT")
+        .appendField("\")");
+    this.setOutput(true, ["Number", "seconds","minutes","hours","days","pennies","nickels","quarters","dollars"]);
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
