@@ -393,3 +393,130 @@ Blockly.Blocks['prompt_for_number'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['units_convert'] = {
+  init: function() {
+    this.appendValueInput("NUM")
+        .setCheck(["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"])
+        .appendField("convert(");
+    this.appendValueInput("FACTOR")
+        .setCheck(["Number", "input_cell"])
+        .appendField(").units_with_conversion_factor(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setOutput(true, ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['units_remaining'] = {
+  init: function() {
+    this.appendValueInput("NUM")
+        .setCheck(["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"])
+        .appendField("remaining_from(");
+    this.appendValueInput("FACTOR")
+        .setCheck(["Number", "input_cell"])
+        .appendField(").units_after_removal_of_units_of(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setOutput(true, ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['before_substring'] = {
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck("String")
+        .appendField("from_text(");
+    this.appendValueInput("SUB")
+        .setCheck("String")
+        .appendField(").get_before_text(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, "String");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['after_substring'] = {
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck("String")
+        .appendField("from_text(");
+    this.appendValueInput("SUB")
+        .setCheck("String")
+        .appendField(").get_after_text(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, "String");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['variable_general_set'] = {
+  init: function() {
+    this.appendValueInput("VALUE")
+        .setCheck(null)
+        .appendField("set(")
+        .appendField(new Blockly.FieldVariable("item"), "VAR")
+        .appendField(").to(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(330);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['function_defoneinput'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("def ")
+        .appendField(new Blockly.FieldTextInput("function_name"), "NAME")
+        .appendField("(")
+        .appendField(new Blockly.FieldTextInput("variable_name"), "PARAM")
+        .appendField(")");
+    this.appendStatementInput("STACK")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("end");
+    this.setInputsInline(true);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['function_deftwoinputs'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("def ")
+        .appendField(new Blockly.FieldTextInput("function_name"), "NAME")
+        .appendField("(")
+        .appendField(new Blockly.FieldTextInput("variable1"), "PARAMA")
+        .appendField(",")
+        .appendField(new Blockly.FieldTextInput("variable2"), "PARAMB")
+        .appendField(")");
+    this.appendStatementInput("STACK")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("end");
+    this.setInputsInline(true);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

@@ -579,6 +579,232 @@
   "helpUrl": ""
 },
 {
+  "type": "units_convert",
+  "message0": "convert( %1 ).units_with_conversion_factor( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NUM",
+      "check": [
+        "Number",
+        "input_cell",
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "pennies",
+        "nickels",
+        "quarters",
+        "dollars"
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "FACTOR",
+      "check": [
+        "Number",
+        "input_cell"
+      ]
+    }
+  ],
+  "output": [
+    "Number",
+    "input_cell",
+    "seconds",
+    "minutes",
+    "hours",
+    "days",
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "units_remaining",
+  "message0": "remaining_from( %1 ).units_after_removal_of_units_of( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NUM",
+      "check": [
+        "Number",
+        "input_cell",
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "pennies",
+        "nickels",
+        "quarters",
+        "dollars"
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "FACTOR",
+      "check": [
+        "Number",
+        "input_cell"
+      ]
+    }
+  ],
+  "output": [
+    "Number",
+    "input_cell",
+    "seconds",
+    "minutes",
+    "hours",
+    "days",
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "before_substring",
+  "message0": "from_text( %1 ).get_before_text( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "TEXT",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "SUB",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "after_substring",
+  "message0": "from_text( %1 ).get_after_text( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "TEXT",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "SUB",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "variable_general_set",
+  "message0": "set( %1 ).to( %2 )",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "item"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "function_defoneinput",
+  "message0": "def  %1 ( %2 ) %3 %4 end",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "NAME",
+      "text": "function_name"
+    },
+    {
+      "type": "field_input",
+      "name": "PARAM",
+      "text": "variable_name"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "STACK"
+    }
+  ],
+  "inputsInline": true,
+  "colour": 290,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "function_deftwoinputs",
+  "message0": "def  %1 ( %2 , %3 ) %4 %5 end",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "NAME",
+      "text": "function_name"
+    },
+    {
+      "type": "field_input",
+      "name": "PARAMA",
+      "text": "variable1"
+    },
+    {
+      "type": "field_input",
+      "name": "PARAMB",
+      "text": "variable2"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "STACK"
+    }
+  ],
+  "inputsInline": true,
+  "colour": 290,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "text",
+  "message0": "\" %1 \"",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "TEXT",
+      "text": ""
+    }
+  ],
+  "output": "String",
+  "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "variables_get",
   "message0": "%1",
   "args0": [

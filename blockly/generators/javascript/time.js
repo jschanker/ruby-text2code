@@ -40,6 +40,30 @@ function getRemainingAfterConvert(fromType, toType, conversionFactor, units) {
   }
 }
 
+function unitlessConvert(conversionFactor, units) {
+  var int_units = units instanceof Unit ? units.toInteger() : Math.floor(units);
+  return Math.floor(int_units / conversionFactor);
+}
+
+function unitlessRemainingAfterConvert(conversionFactor, units) {
+  var int_units = units instanceof Unit ? units.toInteger() : Math.floor(units);
+  return int_units % conversionFactor;
+}
+
+function beforeSubstring(str, substr) {
+  var endIndex = str.indexOf(substr);
+  return endIndex >= 0 ? str.substring(0, endIndex) : str;
+}
+
+function beforeLastSubstring(str, substr) {
+  var endIndex = str.lastIndexOf(substr);
+  return endIndex >= 0 ? str.substring(0, endIndex) : str;
+}
+
+function afterSubstring(conversionFactor, units) {
+  return str.substring(str.indexOf(substr) + substr.length);
+}
+
 var NUM_OF_SECONDS_IN_MINUTES = 60;
 var NUM_OF_MINUTES_IN_HOUR = 60;
 var NUM_OF_HOURS_IN_DAY = 24;
@@ -297,4 +321,145 @@ Blockly.JavaScript['prompt_for_number'] = function(block) {
   var code = 'parseInt(window.prompt("' + text_text + '"))';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['units_convert'] = function(block) {
+  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'unitlessConvert(' + value_factor + ',' + value_num + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['units_remaining'] = function(block) {
+  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'unitlessRemainingAfterConvert(' + value_factor + ',' + value_num + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['before_substring'] = function(block) {
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC) || '\'\'';
+  var value_sub = Blockly.JavaScript.valueToCode(block, 'SUB', Blockly.JavaScript.ORDER_ATOMIC) || '\'\'';
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'beforeSubstring(' + value_text + ',' + value_sub + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['after_substring'] = function(block) {
+  var value_text = Blockly.JavaScript.valueToCode(block, 'TEXT', Blockly.JavaScript.ORDER_ATOMIC) || '\'\'';
+  var value_sub = Blockly.JavaScript.valueToCode(block, 'SUB', Blockly.JavaScript.ORDER_ATOMIC) || '\'\'';
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'afterSubstring(' + value_text + ',' + value_sub + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['variable_general_set'] = function(block) {
+  // Variable setter.
+  var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+  var varName = Blockly.JavaScript.variableDB_.getName(
+      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  return varName + ' = ' + argument0 + ';\n';
+};
+
+Blockly.JavaScript['function_defoneinput'] = function(block) {
+  // Define a procedure with a return value.
+  var funcName = Blockly.JavaScript.variableDB_.getName(
+      block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+  var descendants = block.getDescendants();
+  
+  if(descendants.length > 1) {
+    var finalBlockJS = Blockly.JavaScript.blockToCode(descendants[descendants.length-1]);
+    var branch = beforeSubstring(Blockly.JavaScript.statementToCode(block, 'STACK'), finalBlockJS);
+    //alert(finalBlockJS);
+  
+    if (Blockly.JavaScript.STATEMENT_PREFIX) {
+      branch = Blockly.JavaScript.prefixLines(
+          Blockly.JavaScript.STATEMENT_PREFIX.replace(/%1/g,
+          '\'' + block.id + '\''), Blockly.JavaScript.INDENT) + branch;
+    }
+    if (Blockly.JavaScript.INFINITE_LOOP_TRAP) {
+      branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
+          '\'' + block.id + '\'') + branch;
+    }
+    var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
+        Blockly.JavaScript.ORDER_NONE) || beforeLastSubstring(finalBlockJS.trim(), ";");
+    if (returnValue) {
+      returnValue = '  return (' + returnValue + ');\n';
+    }
+  } else {
+    console.log("Foo");
+      var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
+      var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
+          Blockly.JavaScript.ORDER_NONE);
+      if (returnValue) {
+        returnValue = '  return (' + returnValue + ');\n';
+      }
+  }
+  
+  var args = [];
+  for (var i = 0; i < 1; i++) {
+    args[i] = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('PARAM'),
+        Blockly.Variables.NAME_TYPE);
+  }
+  var code = 'function ' + funcName + '(' + args.join(', ') + ') {\n' +
+      branch + returnValue + '}';
+
+  code = Blockly.JavaScript.scrub_(block, code);
+  // Add % so as not to collide with helper functions in definitions list.
+  Blockly.JavaScript.definitions_['%' + funcName] = code;
+  return null;
+};
+
+
+Blockly.JavaScript['function_deftwoinputs'] = function(block) {
+  var funcName = Blockly.JavaScript.variableDB_.getName(
+      block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+  var descendants = block.getDescendants();
+  
+  if(descendants.length > 1) {
+    var finalBlockJS = Blockly.JavaScript.blockToCode(descendants[descendants.length-1]);
+    var branch = beforeSubstring(Blockly.JavaScript.statementToCode(block, 'STACK'), finalBlockJS);
+    //alert(finalBlockJS);
+  
+    if (Blockly.JavaScript.STATEMENT_PREFIX) {
+      branch = Blockly.JavaScript.prefixLines(
+          Blockly.JavaScript.STATEMENT_PREFIX.replace(/%1/g,
+          '\'' + block.id + '\''), Blockly.JavaScript.INDENT) + branch;
+    }
+    if (Blockly.JavaScript.INFINITE_LOOP_TRAP) {
+      branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
+          '\'' + block.id + '\'') + branch;
+    }
+    var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
+        Blockly.JavaScript.ORDER_NONE) || beforeLastSubstring(finalBlockJS.trim(), ";");
+    if (returnValue) {
+      returnValue = '  return (' + returnValue + ');\n';
+    }
+  } else {
+    console.log("Foo");
+      var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
+      var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
+          Blockly.JavaScript.ORDER_NONE);
+      if (returnValue) {
+        returnValue = '  return (' + returnValue + ');\n';
+      }
+  }
+  var args = [];
+  for (var i = 0; i < 2; i++) {
+    args[i] = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('PARAM' + (i === 0 ? 'A' : 'B')),
+        Blockly.Variables.NAME_TYPE);
+  }
+  var code = 'function ' + funcName + '(' + args.join(', ') + ') {\n' +
+      branch + returnValue + '}';
+  code = Blockly.JavaScript.scrub_(block, code);
+  // Add % so as not to collide with helper functions in definitions list.
+  Blockly.JavaScript.definitions_['%' + funcName] = code;
+  return null;
 };
