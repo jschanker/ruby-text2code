@@ -47,11 +47,20 @@ function createText(xmlDoc, root) {
                   
                 });
             }
+            
+            var hasStatementInput = block.args0 && block.args0.map(function(obj) {
+              return obj.type;
+            }).indexOf("input_statement") != -1;
+            
+            if(typeof block.nextStatement != "undefined" || hasStatementInput) {
+                text += "\n";
+            }
         }
         
         for(var j = 0; j < child.children.length; j++) {
             if(child.children[j].nodeName === "next") {
-                text += "\n" + createText(xmlDoc, child.children[j]);
+                //text += "\n" + createText(xmlDoc, child.children[j]);
+                text += createText(xmlDoc, child.children[j]);
             }
         }
     }
@@ -76,7 +85,7 @@ function runCodeAndTestFunctions() {
 
 document.getElementById("convert-to-ruby-text-btn").addEventListener("click", function() {
   var xmlDom = Blockly.Xml.workspaceToDom(workspace);
-  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);alert(xmlText);
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(xmlText, "text/xml");
   textField.innerText = createText(xmlDoc, xmlDoc.querySelector("xml"));
