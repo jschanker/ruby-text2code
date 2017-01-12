@@ -324,8 +324,8 @@ Blockly.JavaScript['prompt_for_number'] = function(block) {
 };
 
 Blockly.JavaScript['units_convert'] = function(block) {
-  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC) || 1;
   // TODO: Assemble JavaScript into code variable.
   var code = 'unitlessConvert(' + value_factor + ',' + value_num + ')';
   // TODO: Change ORDER_NONE to the correct strength.
@@ -333,8 +333,8 @@ Blockly.JavaScript['units_convert'] = function(block) {
 };
 
 Blockly.JavaScript['units_remaining'] = function(block) {
-  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC) || 1;
   // TODO: Assemble JavaScript into code variable.
   var code = 'unitlessRemainingAfterConvert(' + value_factor + ',' + value_num + ')';
   // TODO: Change ORDER_NONE to the correct strength.
@@ -369,13 +369,20 @@ Blockly.JavaScript['variable_general_set'] = function(block) {
 };
 
 Blockly.JavaScript['function_defoneinput'] = function(block) {
-  // Define a procedure with a return value.
+  // Define a procedure with an implicit return value.
   var funcName = Blockly.JavaScript.variableDB_.getName(
       block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
-  var descendants = block.getDescendants();
+  var finalBlock = block.getChildren() && block.getChildren()[0];
+  var b;
   
-  if(descendants.length > 1) {
-    var finalBlockJS = Blockly.JavaScript.blockToCode(descendants[descendants.length-1]);
+  while(finalBlock && (b = finalBlock.getNextBlock())) {
+    finalBlock = b;
+  }
+  
+  //console.log(block.getChildren());
+  
+  if(finalBlock) {
+    var finalBlockJS = Blockly.JavaScript.blockToCode(finalBlock);
     var branch = beforeSubstring(Blockly.JavaScript.statementToCode(block, 'STACK'), finalBlockJS);
     //alert(finalBlockJS);
   
@@ -394,7 +401,6 @@ Blockly.JavaScript['function_defoneinput'] = function(block) {
       returnValue = '  return (' + returnValue + ');\n';
     }
   } else {
-    console.log("Foo");
       var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
       var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
           Blockly.JavaScript.ORDER_NONE);
@@ -419,12 +425,20 @@ Blockly.JavaScript['function_defoneinput'] = function(block) {
 
 
 Blockly.JavaScript['function_deftwoinputs'] = function(block) {
+  // Define a procedure with an implicit return value.
   var funcName = Blockly.JavaScript.variableDB_.getName(
       block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
-  var descendants = block.getDescendants();
+  var finalBlock = block.getChildren() && block.getChildren()[0];
+  var b;
   
-  if(descendants.length > 1) {
-    var finalBlockJS = Blockly.JavaScript.blockToCode(descendants[descendants.length-1]);
+  while(finalBlock && (b = finalBlock.getNextBlock())) {
+    finalBlock = b;
+  }
+  
+  //console.log(block.getChildren());
+  
+  if(finalBlock) {
+    var finalBlockJS = Blockly.JavaScript.blockToCode(finalBlock);
     var branch = beforeSubstring(Blockly.JavaScript.statementToCode(block, 'STACK'), finalBlockJS);
     //alert(finalBlockJS);
   
@@ -443,7 +457,6 @@ Blockly.JavaScript['function_deftwoinputs'] = function(block) {
       returnValue = '  return (' + returnValue + ');\n';
     }
   } else {
-    console.log("Foo");
       var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
       var returnValue = Blockly.JavaScript.valueToCode(block, 'RETURN',
           Blockly.JavaScript.ORDER_NONE);
@@ -451,6 +464,7 @@ Blockly.JavaScript['function_deftwoinputs'] = function(block) {
         returnValue = '  return (' + returnValue + ');\n';
       }
   }
+  
   var args = [];
   for (var i = 0; i < 2; i++) {
     args[i] = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('PARAM' + (i === 0 ? 'A' : 'B')),
