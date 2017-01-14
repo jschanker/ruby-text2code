@@ -109,8 +109,11 @@
                 <block type="prompt_for_number"></block>
               </category>
               <category name="General Conversions" colour="#5b6da5">
+                <block type="math_number_general"></block>
                 <block type="units_convert"></block>
                 <block type="units_remaining"></block>
+              </category>
+              <category name="General Variables" custom="VARIABLE" colour="#a55b6d">
               </category>
               <category name="Text" colour="#5ba5a5">
                 <block type="text"></block>
@@ -121,6 +124,9 @@
                 <block type="function_defoneinput"></block>
                 <block type="function_deftwoinputs"></block>
               </category>
+              <category name="Function Calls" colour="#ff00ff">
+              </category>
+              <!--<category name = "foo" custom="PROCEDURE"></category>-->
             </xml>
         </div>
         <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
@@ -134,7 +140,7 @@
     <div id = "repl">
       <div><span class = "tab-text tab-text-right">repl.it</span></div>
       <!--<iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>-->
-      <iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>
+      <!--<iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>-->
       
     </div>
     <script src = "workspace1.js"></script>

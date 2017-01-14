@@ -477,3 +477,30 @@ Blockly.JavaScript['function_deftwoinputs'] = function(block) {
   Blockly.JavaScript.definitions_['%' + funcName] = code;
   return null;
 };
+
+Blockly.JavaScript['function_calloneinput'] = function(block) {
+  var func_name = block.getFieldValue('NAME');
+  var value_arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = func_name + value_arg1 + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['function_calltwoinputs'] = function(block) {
+  var func_name = block.getFieldValue('NAME');
+  var value_arg1 = Blockly.JavaScript.valueToCode(block, 'ARG1', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_arg2 = Blockly.JavaScript.valueToCode(block, 'ARG2', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = func_name + value_arg1 + ',' + value_arg2 + ')';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['math_number_general'] = function(block) {
+  var number_num = block.getFieldValue('NUM');
+  // TODO: Assemble JavaScript into code variable.
+  var code = parseInt(number_num);
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

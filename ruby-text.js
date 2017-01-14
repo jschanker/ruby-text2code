@@ -1,11 +1,16 @@
 var textField = document.getElementById("text-code");
 
-function createText(xmlDoc, root) {
+function createText(xmlDoc, root, attribute) {
+    // attribute is only used for mutations
     var blocks = getBlockObjects();
     var text = "";
-    
+  
     if(root && root.nodeName === "field") {
       text = root.innerText;
+    }
+    
+    else if(root.nodeName === "mutation" && attribute && root.getAttribute) {
+      text = root.getAttribute(attribute);
     }
     
     for(var i = 0; i < root.children.length; i++) {
@@ -37,8 +42,10 @@ function createText(xmlDoc, root) {
                     }
                     var nodeName = block.args0[num-1].name;
                     for(var j = 0; j < child.children.length; j++) {
-                      if(nodeName && child.children[j].getAttribute("name") === nodeName) {
-                        return createText(xmlDoc, child.children[j]) + addedChar;
+                      var attr = child.children[j].getAttribute("name").toLowerCase();
+                      if(nodeName && attr === nodeName.toLowerCase()
+                         || child.children[j].nodeName.toLowerCase() === "mutation" && child.children[j].getAttribute(nodeName.toLowerCase()) !== null) {
+                        return createText(xmlDoc, child.children[j], nodeName.toLowerCase()) + addedChar;
                       }
                     }
                   }
@@ -85,7 +92,7 @@ function runCodeAndTestFunctions() {
 
 document.getElementById("convert-to-ruby-text-btn").addEventListener("click", function() {
   var xmlDom = Blockly.Xml.workspaceToDom(workspace);
-  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);alert(xmlText);
+  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);//alert(xmlText);
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(xmlText, "text/xml");
   textField.innerText = createText(xmlDoc, xmlDoc.querySelector("xml"));
@@ -102,13 +109,14 @@ document.getElementById("convert-to-ruby-text-btn").addEventListener("click", fu
     return callBlock;
   });
   var functionCategories = Array.prototype.filter.call(document.getElementById('toolbox').children, function(category){ 
-  return category.getAttribute("name") === "Function Definitions"; 
+    return category.getAttribute("name") === "Function Calls"; 
   });
+
   functionCategories.forEach(function(category) {
+    category.innerHTML = ""; // quick way to remove all function call blocks
     functionCallBlocks.forEach(function(block) {
       category.appendChild(block);
     });
   });
   workspace.updateToolbox(document.getElementById('toolbox'));
-
 });

@@ -544,15 +544,17 @@ Blockly.Blocks['function_calloneinput'] = {
   },
   mutationToDom: function() {
     var container = document.createElement('mutation');
-    container.setAttribute('name', this.getFieldValue('NAME'));
-    //alert(container.getAttribute('name'));
+    container.setAttribute('NAME', this.getFieldValue('NAME'));
+    // Below is for consistency with <field name = "...">value</field>
+    //container.setAttribute('NAME', 'name');
+    //container.innerText = this.getFieldValue('NAME');
     return container;
   },
   domToMutation: function(xmlElement) {
     //alert(this.getField
     //alert("NAME: " + xmlElement.getAttribute('name'));
     //alert("MY NAME IS: " + this.setFieldValue('NAME'));
-    this.setFieldValue(xmlElement.getAttribute('name'), 'NAME');
+    this.setFieldValue(xmlElement.getAttribute('NAME'), 'NAME');
   }
 };
 
@@ -576,7 +578,7 @@ Blockly.Blocks['function_calltwoinputs'] = {
   },
   mutationToDom: function() {
     var container = document.createElement('mutation');
-    container.setAttribute('name', this.getFieldValue('NAME'));
+    container.setAttribute('NAME', this.getFieldValue('NAME'));
     //alert(container.getAttribute('name'));
     return container;
   },
@@ -584,6 +586,17 @@ Blockly.Blocks['function_calltwoinputs'] = {
     //alert(this.getField
     //alert("NAME: " + xmlElement.getAttribute('name'));
     //alert("MY NAME IS: " + this.setFieldValue('NAME'));
-    this.setFieldValue(xmlElement.getAttribute('name'), 'NAME');
+    this.setFieldValue(xmlElement.getAttribute('NAME'), 'NAME');
+  }
+};
+
+Blockly.Blocks['math_number_general'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM");
+    this.setOutput(true, ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
   }
 };

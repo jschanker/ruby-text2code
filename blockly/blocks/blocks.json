@@ -791,7 +791,7 @@
 },
 {
   "type": "function_calloneinput",
-  "message0": "%1 ( %2 )",
+  "message0": "%1 %2 )",
   "args0": [
     {
       "type": "field_label",
@@ -811,7 +811,7 @@
 },
 {
   "type": "function_calltwoinputs",
-  "message0": "%1 ( %2 , %3 )",
+  "message0": "%1 %2 , %3 )",
   "args0": [
     {
       "type": "field_label",
@@ -860,6 +860,32 @@
   ],
   "output": null,
   "colour": 330,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "math_number_general",
+  "message0": "%1",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": [
+    "Number",
+    "input_cell",
+    "seconds",
+    "minutes",
+    "hours",
+    "days",
+    "pennies",
+    "nickels",
+    "quarters",
+    "dollars"
+  ],
+  "colour": 230,
   "tooltip": "",
   "helpUrl": "http://www.example.com/"
 }]
