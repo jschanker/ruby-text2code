@@ -497,6 +497,9 @@ Blockly.Blocks['function_defoneinput'] = {
     this.setColour(290);
     this.setTooltip('');
     this.setHelpUrl('');
+  },
+  getProcedureDef: function() {
+    return [this.getFieldValue('NAME'), [this.getFieldValue('PARAM')], false];
   }
 };
 
@@ -518,5 +521,69 @@ Blockly.Blocks['function_deftwoinputs'] = {
     this.setColour(290);
     this.setTooltip('');
     this.setHelpUrl('');
+  },
+  getProcedureDef: function() {
+    return [this.getFieldValue('NAME'), [this.getFieldValue('PARAMA'), this.getFieldValue('PARAMB')], false];
+  }
+};
+
+Blockly.Blocks['function_calloneinput'] = {
+  init: function() {
+    this.appendDummyInput();
+    this.appendValueInput("ARG1")
+        .setCheck(null)
+        //.appendField(new Blockly.FieldTextInput("default"), "FOO")
+        .appendField(new Blockly.FieldLabel("("), "NAME");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(270);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('name', this.getFieldValue('NAME'));
+    //alert(container.getAttribute('name'));
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    //alert(this.getField
+    //alert("NAME: " + xmlElement.getAttribute('name'));
+    //alert("MY NAME IS: " + this.setFieldValue('NAME'));
+    this.setFieldValue(xmlElement.getAttribute('name'), 'NAME');
+  }
+};
+
+Blockly.Blocks['function_calltwoinputs'] = {
+  init: function() {
+    this.appendDummyInput();
+    this.appendValueInput("ARG1")
+        .setCheck(null)
+        //.appendField(new Blockly.FieldTextInput("default"), "FOO")
+        .appendField("(", "NAME");
+    this.appendValueInput("ARG2")
+        .setCheck(null)
+        .appendField(",");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(270);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('name', this.getFieldValue('NAME'));
+    //alert(container.getAttribute('name'));
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    //alert(this.getField
+    //alert("NAME: " + xmlElement.getAttribute('name'));
+    //alert("MY NAME IS: " + this.setFieldValue('NAME'));
+    this.setFieldValue(xmlElement.getAttribute('name'), 'NAME');
   }
 };

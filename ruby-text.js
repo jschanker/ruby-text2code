@@ -71,7 +71,7 @@ function createText(xmlDoc, root) {
 function runCodeAndTestFunctions() {
   window.LoopTrap = 1000;
   Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
-  var code = Blockly.JavaScript.workspaceToCode();
+  var code = Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
   try {
     eval(code);
   } catch(e) {
@@ -89,7 +89,26 @@ document.getElementById("convert-to-ruby-text-btn").addEventListener("click", fu
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(xmlText, "text/xml");
   textField.innerText = createText(xmlDoc, xmlDoc.querySelector("xml"));
-  textField.innerText += "\n\n" + Blockly.JavaScript.workspaceToCode();
-  eval(Blockly.JavaScript.workspaceToCode());
-  //alert(s);
+  textField.innerText += "\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
+  eval(Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace()));
+  var functionCallBlocks = workspace.getAllBlocks().filter(function(block) {
+    return typeof block.type === "string" && block.type.indexOf("function_def") === 0;
+  }).map(function(block) {
+    var callBlock = goog.dom.createDom('block');
+    callBlock.setAttribute('type', block.type.replace("def", "call"));
+    var field = goog.dom.createDom('field', null, block.getFieldValue("NAME") + "(");
+    field.setAttribute('name', 'NAME');
+    callBlock.appendChild(field);
+    return callBlock;
+  });
+  var functionCategories = Array.prototype.filter.call(document.getElementById('toolbox').children, function(category){ 
+  return category.getAttribute("name") === "Function Definitions"; 
+  });
+  functionCategories.forEach(function(category) {
+    functionCallBlocks.forEach(function(block) {
+      category.appendChild(block);
+    });
+  });
+  workspace.updateToolbox(document.getElementById('toolbox'));
+
 });

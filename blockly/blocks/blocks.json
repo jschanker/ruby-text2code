@@ -790,6 +790,50 @@
   "helpUrl": ""
 },
 {
+  "type": "function_calloneinput",
+  "message0": "%1 ( %2 )",
+  "args0": [
+    {
+      "type": "field_label",
+      "name": "NAME",
+      "text": "default"
+    },
+    {
+      "type": "input_value",
+      "name": "ARG1"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 270,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "function_calltwoinputs",
+  "message0": "%1 ( %2 , %3 )",
+  "args0": [
+    {
+      "type": "field_label",
+      "name": "NAME",
+      "text": "default"
+    },
+    {
+      "type": "input_value",
+      "name": "ARG1"
+    },
+    {
+      "type": "input_value",
+      "name": "ARG2"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 270,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "text",
   "message0": "\" %1 \"",
   "args0": [
