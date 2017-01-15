@@ -60,7 +60,7 @@ function beforeLastSubstring(str, substr) {
   return endIndex >= 0 ? str.substring(0, endIndex) : str;
 }
 
-function afterSubstring(conversionFactor, units) {
+function afterSubstring(str, substr) {
   return str.substring(str.indexOf(substr) + substr.length);
 }
 
