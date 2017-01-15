@@ -1,12 +1,59 @@
+Blockly.Blocks['seconds_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".seconds");
+    this.setOutput(true, ["seconds"]);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['minutes_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".minutes");
+    this.setOutput(true, ["minutes"]);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['hours_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".hours");
+    this.setOutput(true, ["hours"]);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['days_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".days");
+    this.setOutput(true, ["days"]);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['seconds_to_minutes'] = {
   init: function() {
     this.appendValueInput("SECONDS")
         .setCheck("seconds")
-        .appendField("seconds_to_minutes(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".seconds.to_minutes");
     this.setOutput(true, "minutes");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -16,11 +63,10 @@ Blockly.Blocks['minutes_to_hours'] = {
   init: function() {
     this.appendValueInput("MINUTES")
         .setCheck("minutes")
-        .appendField("minutes_to_hours(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".minutes.to_hours");
     this.setOutput(true, "hours");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -30,11 +76,10 @@ Blockly.Blocks['hours_to_days'] = {
   init: function() {
     this.appendValueInput("HOURS")
         .setCheck("hours")
-        .appendField("hours_to_days(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".hours.to_days");
     this.setOutput(true, "days");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -44,11 +89,10 @@ Blockly.Blocks['remaining_seconds'] = {
   init: function() {
     this.appendValueInput("SECONDS")
         .setCheck("seconds")
-        .appendField("remaining_seconds_after_minutes_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".seconds.remaining_after_removal_of_minutes");
     this.setOutput(true, "seconds");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -58,11 +102,10 @@ Blockly.Blocks['remaining_minutes'] = {
   init: function() {
     this.appendValueInput("MINUTES")
         .setCheck("minutes")
-        .appendField("remaining_minutes_after_hours_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".minutes.remaining_after_removal_of_hours");
     this.setOutput(true, "minutes");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -72,22 +115,22 @@ Blockly.Blocks['remaining_hours'] = {
   init: function() {
     this.appendValueInput("HOURS")
         .setCheck("hours")
-        .appendField("remaining_hours_after_days_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".hours.remaining_after_removal_of_days");
     this.setOutput(true, "hours");
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };
 
+/*
 Blockly.Blocks['time_number'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(new Blockly.FieldNumber(0), "NUM");
     this.setOutput(true, ["seconds", "minutes", "hours", "days"]);
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -160,16 +203,63 @@ Blockly.Blocks['days_variable_set'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
-
+*/
 // CURRENCY
+
+Blockly.Blocks['pennies_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".pennies");
+    this.setOutput(true, ["pennies"]);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['nickels_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".nickels");
+    this.setOutput(true, ["nickels"]);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['quarters_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".quarters");
+    this.setOutput(true, ["quarters"]);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['dollars_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "NUM")
+        .appendField(".dollars");
+    this.setOutput(true, ["dollars"]);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
 
 Blockly.Blocks['pennies_to_nickels'] = {
   init: function() {
     this.appendValueInput("PENNIES")
         .setCheck("pennies")
-        .appendField("pennies_to_nickels(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".pennies.to_nickels");
     this.setOutput(true, "nickels");
     this.setColour(120);
     this.setTooltip('');
@@ -181,9 +271,8 @@ Blockly.Blocks['nickels_to_quarters'] = {
   init: function() {
     this.appendValueInput("NICKELS")
         .setCheck("nickels")
-        .appendField("nickels_to_quarters(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".nickels.to_quarters");
     this.setOutput(true, "quarters");
     this.setColour(120);
     this.setTooltip('');
@@ -195,9 +284,8 @@ Blockly.Blocks['quarters_to_dollars'] = {
   init: function() {
     this.appendValueInput("QUARTERS")
         .setCheck("quarters")
-        .appendField("quarters_to_dollars(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".quarters.to_dollars");
     this.setOutput(true, "dollars");
     this.setColour(120);
     this.setTooltip('');
@@ -209,9 +297,8 @@ Blockly.Blocks['remaining_pennies'] = {
   init: function() {
     this.appendValueInput("PENNIES")
         .setCheck("pennies")
-        .appendField("remaining_pennies_after_nickels_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".pennies.remaining_after_removal_of_nickels");
     this.setOutput(true, "pennies");
     this.setColour(120);
     this.setTooltip('');
@@ -223,9 +310,8 @@ Blockly.Blocks['remaining_nickels'] = {
   init: function() {
     this.appendValueInput("NICKELS")
         .setCheck("nickels")
-        .appendField("remaining_nickels_after_quarters_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".nickels.remaining_after_removal_of_quarters");
     this.setOutput(true, "nickels");
     this.setColour(120);
     this.setTooltip('');
@@ -237,9 +323,8 @@ Blockly.Blocks['remaining_quarters'] = {
   init: function() {
     this.appendValueInput("QUARTERS")
         .setCheck("quarters")
-        .appendField("remaining_quarters_after_dollars_removed(");
     this.appendDummyInput()
-        .appendField(")");
+        .appendField(".quarters.remaining_after_removal_of_dollars");
     this.setOutput(true, "quarters");
     this.setColour(120);
     this.setTooltip('');
@@ -247,7 +332,7 @@ Blockly.Blocks['remaining_quarters'] = {
   }
 };
 
-Blockly.Blocks['pennies_variable_set'] = {
+/*Blockly.Blocks['pennies_variable_set'] = {
   init: function() {
     this.appendValueInput("VALUE")
         .setCheck("pennies")
@@ -324,7 +409,7 @@ Blockly.Blocks['currency_number'] = {
     this.setTooltip('');
     this.setHelpUrl('');
   }
-};
+};*/
 
 Blockly.Blocks['units_print'] = {
   init: function() {
@@ -397,11 +482,10 @@ Blockly.Blocks['prompt_for_number'] = {
 Blockly.Blocks['units_convert'] = {
   init: function() {
     this.appendValueInput("NUM")
-        .setCheck(["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"])
-        .appendField("convert(");
+        .setCheck(["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
     this.appendValueInput("FACTOR")
         .setCheck(["Number", "input_cell"])
-        .appendField(").units_with_conversion_factor(");
+        .appendField(".units.to_units_with_conversion_factor(");
     this.appendDummyInput()
         .appendField(")");
     this.setOutput(true, ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
@@ -415,10 +499,9 @@ Blockly.Blocks['units_remaining'] = {
   init: function() {
     this.appendValueInput("NUM")
         .setCheck(["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"])
-        .appendField("remaining_from(");
     this.appendValueInput("FACTOR")
         .setCheck(["Number", "input_cell"])
-        .appendField(").units_after_removal_of_units_of(");
+        .appendField(".units.remaining_after_removal_of_units_of(");
     this.appendDummyInput()
         .appendField(")");
     this.setOutput(true, ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]);
@@ -432,16 +515,16 @@ Blockly.Blocks['before_substring'] = {
   init: function() {
     this.appendValueInput("TEXT")
         .setCheck("String")
-        .appendField("from_text(");
+        //.appendField("from_text(");
     this.appendValueInput("SUB")
         .setCheck("String")
-        .appendField(").get_before_text(");
+        .appendField(".get_before_text(");
     this.appendDummyInput()
         .appendField(")");
     this.setInputsInline(true);
     this.setOutput(true, "String");
     this.setColour(160);
-    this.setTooltip('');
+    this.setTooltip('from text');
     this.setHelpUrl('');
   }
 };
@@ -450,16 +533,16 @@ Blockly.Blocks['after_substring'] = {
   init: function() {
     this.appendValueInput("TEXT")
         .setCheck("String")
-        .appendField("from_text(");
+        //.appendField("from_text(");
     this.appendValueInput("SUB")
         .setCheck("String")
-        .appendField(").get_after_text(");
+        .appendField(".get_after_text(");
     this.appendDummyInput()
         .appendField(")");
     this.setInputsInline(true);
     this.setOutput(true, "String");
     this.setColour(160);
-    this.setTooltip('');
+    this.setTooltip('from text');
     this.setHelpUrl('');
   }
 };
@@ -481,6 +564,51 @@ Blockly.Blocks['variable_general_set'] = {
   }
 };
 
+Blockly.Blocks['function_getself'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("self");
+    this.setOutput(true, null);
+    this.setColour(270);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['class_def'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("class")
+        .appendField(new Blockly.FieldTextInput("class_name"), "NAME");
+    this.appendStatementInput("STACK")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("end");
+    this.setInputsInline(true);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['function_defzeroinputs'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("def ")
+        .appendField(new Blockly.FieldTextInput("function_name"), "NAME");
+    this.appendStatementInput("STACK")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("end");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks['function_defoneinput'] = {
   init: function() {
     this.appendDummyInput()
@@ -493,6 +621,8 @@ Blockly.Blocks['function_defoneinput'] = {
         .setCheck(null);
     this.appendDummyInput()
         .appendField("end");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(290);
     this.setTooltip('');

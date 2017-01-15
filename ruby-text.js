@@ -1,4 +1,4 @@
-var textField = document.getElementById("text-code");
+var textField = document.getElementById("text-code-box");
 
 function createText(xmlDoc, root, attribute) {
     // attribute is only used for mutations
@@ -95,8 +95,12 @@ document.getElementById("convert-to-ruby-text-btn").addEventListener("click", fu
   var xmlText = Blockly.Xml.domToPrettyText(xmlDom);//alert(xmlText);
   var parser = new DOMParser();
   var xmlDoc = parser.parseFromString(xmlText, "text/xml");
-  textField.innerText = createText(xmlDoc, xmlDoc.querySelector("xml"));
-  textField.innerText += "\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
+  //textField.innerText = "Ruby with Text2Code:\n\n" + createText(xmlDoc, xmlDoc.querySelector("xml"));
+  //textField.innerText += "\n\nJavaScript:\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
+  //textField.innerText = textField.innerText.replace("\t", "  ");
+  textField.value = "Ruby with Text2Code:\n\n" + createText(xmlDoc, xmlDoc.querySelector("xml"));
+  textField.value += "\n\nJavaScript:\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
+  
   eval(Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace()));
   var functionCallBlocks = workspace.getAllBlocks().filter(function(block) {
     return typeof block.type === "string" && block.type.indexOf("function_def") === 0;

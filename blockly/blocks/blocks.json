@@ -1,6 +1,6 @@
 [{
   "type": "seconds_to_minutes",
-  "message0": "seconds_to_minutes( %1 )",
+  "message0": "%1 .seconds.to_minutes",
   "args0": [
     {
       "type": "input_value",
@@ -15,7 +15,7 @@
 },
 {
   "type": "minutes_to_hours",
-  "message0": "minutes_to_hours( %1 )",
+  "message0": "%1 .minutes.to_hours",
   "args0": [
     {
       "type": "input_value",
@@ -30,7 +30,7 @@
 },
 {
   "type": "hours_to_days",
-  "message0": "hours_to_days( %1 )",
+  "message0": "%1 .hours.to_days",
   "args0": [
     {
       "type": "input_value",
@@ -45,7 +45,7 @@
 },
 {
   "type": "remaining_seconds",
-  "message0": "remaining_seconds_after_minutes_removed( %1 )",
+  "message0": "%1 .seconds.remaining_after_removal_of_minutes",
   "args0": [
     {
       "type": "input_value",
@@ -60,7 +60,7 @@
 },
 {
   "type": "remaining_minutes",
-  "message0": "remaining_minutes_after_hours_removed( %1 )",
+  "message0": "%1 .minutes.remaining_after_removal_of_hours",
   "args0": [
     {
       "type": "input_value",
@@ -75,7 +75,7 @@
 },
 {
   "type": "remaining_hours",
-  "message0": "remaining_hours_after_days_removed( %1 )",
+  "message0": "%1 .hours.remaining_after_removal_of_days",
   "args0": [
     {
       "type": "input_value",
@@ -104,6 +104,66 @@
     "hours",
     "days"
   ],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "seconds_number",
+  "message0": "%1 .seconds",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["seconds"],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "minutes_number",
+  "message0": "%1 .minutes",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["minutes"],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "hours_number",
+  "message0": "%1 .hours",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["hours"],
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "days_number",
+  "message0": "%1 .days",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["days"],
   "colour": 230,
   "tooltip": "",
   "helpUrl": "http://www.example.com/"
@@ -193,8 +253,68 @@
   "helpUrl": "http://www.example.com/"
 },
 {
+  "type": "pennies_number",
+  "message0": "%1 .pennies",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["pennies"],
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "nickels_number",
+  "message0": "%1 .nickels",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["nickels"],
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "quarters_number",
+  "message0": "%1 .quarters",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["quarters"],
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "dollars_number",
+  "message0": "%1 .dollars",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "NUM",
+      "value": 0
+    }
+  ],
+  "output": ["dollars"],
+  "colour": 120,
+  "tooltip": "",
+  "helpUrl": "http://www.example.com/"
+},
+{
   "type": "pennies_to_nickels",
-  "message0": "pennies_to_nickels( %1 )",
+  "message0": "%1 .pennies.to_nickels",
   "args0": [
     {
       "type": "input_value",
@@ -209,7 +329,7 @@
 },
 {
   "type": "nickels_to_quarters",
-  "message0": "nickels_to_quarters( %1 )",
+  "message0": "%1 .nickels.to_quarters",
   "args0": [
     {
       "type": "input_value",
@@ -224,7 +344,7 @@
 },
 {
   "type": "quarters_to_dollars",
-  "message0": "quarters_to_dollars( %1 )",
+  "message0": "%1 .quarters.to_dollars",
   "args0": [
     {
       "type": "input_value",
@@ -239,7 +359,7 @@
 },
 {
   "type": "remaining_pennies",
-  "message0": "remaining_pennies_after_nickels_removed( %1 )",
+  "message0": "%1 .pennies.remaining_after_removal_of_nickels",
   "args0": [
     {
       "type": "input_value",
@@ -254,7 +374,7 @@
 },
 {
   "type": "remaining_nickels",
-  "message0": "remaining_nickels_after_quarters_removed( %1 )",
+  "message0": "%1 .nickels.remaining_after_removal_of_quarters",
   "args0": [
     {
       "type": "input_value",
@@ -269,7 +389,7 @@
 },
 {
   "type": "remaining_quarters",
-  "message0": "remaining_quarters_after_dollars_removed( %1 )",
+  "message0": "%1 .quarters.remaining_after_removal_of_dollars",
   "args0": [
     {
       "type": "input_value",
@@ -580,7 +700,7 @@
 },
 {
   "type": "units_convert",
-  "message0": "convert( %1 ).units_with_conversion_factor( %2 )",
+  "message0": "%1 .units.to_units_with_conversion_factor( %2 )",
   "args0": [
     {
       "type": "input_value",
@@ -625,7 +745,7 @@
 },
 {
   "type": "units_remaining",
-  "message0": "remaining_from( %1 ).units_after_removal_of_units_of( %2 )",
+  "message0": "%1 .units.remaining_after_removal_of_units_of( %2 )",
   "args0": [
     {
       "type": "input_value",
@@ -670,7 +790,7 @@
 },
 {
   "type": "before_substring",
-  "message0": "from_text( %1 ).get_before_text( %2 )",
+  "message0": "%1 .get_before_text( %2 )",
   "args0": [
     {
       "type": "input_value",
@@ -691,7 +811,7 @@
 },
 {
   "type": "after_substring",
-  "message0": "from_text( %1 ).get_after_text( %2 )",
+  "message0": "%1 .get_after_text( %2 )",
   "args0": [
     {
       "type": "input_value",
@@ -731,6 +851,30 @@
   "helpUrl": ""
 },
 {
+  "type": "function_defzeroinputs",
+  "message0": "def  %1 %2 %3 end",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "NAME",
+      "text": "function_name"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "STACK"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "inputsInline": true,
+  "colour": 290,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "function_defoneinput",
   "message0": "def  %1 ( %2 ) %3 %4 end",
   "args0": [
@@ -752,6 +896,8 @@
       "name": "STACK"
     }
   ],
+  "previousStatement": null,
+  "nextStatement": null,
   "inputsInline": true,
   "colour": 290,
   "tooltip": "",
@@ -784,6 +930,8 @@
       "name": "STACK"
     }
   ],
+  "previousStatement": null,
+  "nextStatement": null,
   "inputsInline": true,
   "colour": 290,
   "tooltip": "",
@@ -834,6 +982,28 @@
   "helpUrl": ""
 },
 {
+  "type": "class_def",
+  "message0": "class %1 %2 %3 end",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "NAME",
+      "text": "class_name"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "STACK"
+    }
+  ],
+  "inputsInline": true,
+  "colour": 290,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "text",
   "message0": "\" %1 \"",
   "args0": [
@@ -845,6 +1015,26 @@
   ],
   "output": "String",
   "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "variables_set",
+  "message0": "%1 = %2",
+  "args0": [
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "default"
+    },
+    {
+      "type": "input_value",
+      "name": "VALUE"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 330,
   "tooltip": "",
   "helpUrl": ""
 },

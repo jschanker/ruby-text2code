@@ -86,6 +86,38 @@ var remaining_pennies_after_nickels_removed = getRemainingAfterConvert.bind(null
 var remaining_nickels_after_quarters_removed = getRemainingAfterConvert.bind(null, "nickels", "quarters", NUM_OF_NICKELS_IN_QUARTER);
 var remaining_quarters_after_dollars_removed = getRemainingAfterConvert.bind(null, "quarters", "dollars", NUM_OF_QUARTERS_IN_DOLLAR);
 
+Blockly.JavaScript['seconds_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "seconds")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['minutes_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "minutes")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['hours_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "hours")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['days_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "days");\n';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
 Blockly.JavaScript['seconds_to_minutes'] = function(block) {
   var value_seconds = Blockly.JavaScript.valueToCode(block, 'SECONDS', Blockly.JavaScript.ORDER_ATOMIC) || 0;
   // TODO: Assemble JavaScript into code variable.
@@ -177,6 +209,38 @@ Blockly.JavaScript['time_number'] = function(block) {
 };
 
 // CURRENCY
+
+Blockly.JavaScript['pennies_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "pennies")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['nickels_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "nickels")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['quarters_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "quarters")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['dollars_number'] = function(block) {
+  var number_num = block.getFieldValue('NUM') || 0;
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'setToUnits(' + parseInt(number_num) + ', "dollars")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
 
 Blockly.JavaScript['pennies_to_nickels'] = function(block) {
   var value_pennies = Blockly.JavaScript.valueToCode(block, 'PENNIES', Blockly.JavaScript.ORDER_ATOMIC) || 0;
@@ -504,3 +568,8 @@ Blockly.JavaScript['math_number_general'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+//alert(Blockly.Msg.VARIABLES_SET);
+//Blockly.Blocks['variables_set'].msg0 = "%1 = %2";
+Blockly.Msg.VARIABLES_SET = "%1 = %2";
+//alert(Blockly.Msg.VARIABLES_SET);
