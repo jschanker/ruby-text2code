@@ -657,6 +657,33 @@ Blockly.Blocks['function_deftwoinputs'] = {
   }
 };
 
+Blockly.Blocks['function_callzeroinputs'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("function_name"), "NAME")
+        .appendField("()");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(270);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('NAME', this.getFieldValue('NAME'));
+    // Below is for consistency with <field name = "...">value</field>
+    //container.setAttribute('NAME', 'name');
+    //container.innerText = this.getFieldValue('NAME');
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    //alert(this.getField
+    //alert("NAME: " + xmlElement.getAttribute('name'));
+    //alert("MY NAME IS: " + this.setFieldValue('NAME'));
+    this.setFieldValue(xmlElement.getAttribute('NAME'), 'NAME');
+  }
+};
+
 Blockly.Blocks['function_calloneinput'] = {
   init: function() {
     this.appendDummyInput();

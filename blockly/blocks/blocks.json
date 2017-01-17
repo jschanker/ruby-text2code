@@ -938,6 +938,22 @@
   "helpUrl": ""
 },
 {
+  "type": "function_callzeroinputs",
+  "message0": "%1 ()",
+  "args0": [
+    {
+      "type": "field_label",
+      "name": "NAME",
+      "text": "function_name"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 270,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "function_calloneinput",
   "message0": "%1 %2 )",
   "args0": [
