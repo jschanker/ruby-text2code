@@ -660,8 +660,8 @@ Blockly.Blocks['function_deftwoinputs'] = {
 Blockly.Blocks['function_callzeroinputs'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput("function_name"), "NAME")
-        .appendField("()");
+        .appendField(new Blockly.FieldTextInput("function_name"), "NAME");
+        //.appendField("()");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(270);
