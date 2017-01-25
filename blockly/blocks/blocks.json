@@ -1021,7 +1021,7 @@
 },
 {
   "type": "text",
-  "message0": "\" %1 \"",
+  "message0": "\"%1\"",
   "args0": [
     {
       "type": "field_input",
@@ -1094,4 +1094,78 @@
   "colour": 230,
   "tooltip": "",
   "helpUrl": "http://www.example.com/"
+},
+{
+  "type": "string_concatenate",
+  "message0": "%1 + %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "A",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "B",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": 160,
+  "helpUrl": ""
+},
+{
+  "type": "math_number_round",
+  "message0": "%1.%2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NUM",
+      "check": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]
+    },
+    {
+      "type": "field_dropdown",
+      "name": "OP",
+      "options": [
+        ["round", "round"],
+        ["round_up", "round_up"],
+        ["round_down", "round_down"]
+      ]
+    }
+  ],
+  "output": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"],
+  "colour": null,
+  "tooltip": null,
+  "helpUrl": null
+},
+{
+  "type": "math_number_arithmetic",
+  "message0": "%1 %2 %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "A",
+      "check": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]
+    },
+    {
+      "type": "field_dropdown",
+      "name": "OP",
+      "options":
+        [["+", "ADD"],
+         ["-", "MINUS"],
+         ["*", "MULTIPLY"],
+         ["/", "DIVIDE"],
+         ["**", "POWER"]]
+    },
+    {
+      "type": "input_value",
+      "name": "B",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"],
+  "colour": null,
+  "helpUrl": null
 }]

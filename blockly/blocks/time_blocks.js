@@ -747,6 +747,35 @@ Blockly.Blocks['function_calltwoinputs'] = {
   }
 };
 
+Blockly.Blocks['string_concatenate'] = {
+  /**
+   * Block for basic arithmetic operator.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1 + %2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "A",
+          "check": "String"
+        },
+        {
+          "type": "input_value",
+          "name": "B",
+          "check": "String"
+        }
+      ],
+      "inputsInline": true,
+      "output": "String",
+      "colour": 160,
+      "helpUrl": ""
+    });
+  }
+};
+
+
 Blockly.Blocks['math_number_general'] = {
   init: function() {
     this.appendDummyInput()
@@ -755,5 +784,85 @@ Blockly.Blocks['math_number_general'] = {
     this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['math_number_arithmetic'] = {
+  /**
+   * Block for basic arithmetic operator.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1 %2 %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "A",
+          "check": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]
+        },
+        {
+          "type": "field_dropdown",
+          "name": "OP",
+          "options":
+            [[Blockly.Msg.MATH_ADDITION_SYMBOL, '+'],
+             [Blockly.Msg.MATH_SUBTRACTION_SYMBOL, '-'],
+             [Blockly.Msg.MATH_MULTIPLICATION_SYMBOL, '*'],
+             [Blockly.Msg.MATH_DIVISION_SYMBOL, '/'],
+             [Blockly.Msg.MATH_POWER_SYMBOL, '**']]
+        },
+        {
+          "type": "input_value",
+          "name": "B",
+          "check": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number",
+      "colour": Blockly.Blocks.math.HUE,
+      "helpUrl": Blockly.Msg.MATH_ARITHMETIC_HELPURL
+    });
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'ADD': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_ADD,
+        'MINUS': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MINUS,
+        'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
+        'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
+        'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Blocks['math_number_round'] = {
+  init: function() {
+    this.jsonInit({
+      "type": "math_number_round",
+      "message0": "%1.%2",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "NUM",
+          "check": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"]
+        },
+        {
+          "type": "field_dropdown",
+          "name": "OP",
+          "options": [
+            [Blockly.Msg.MATH_ROUND_OPERATOR_ROUND, 'round'],
+            [Blockly.Msg.MATH_ROUND_OPERATOR_ROUNDUP, 'round_up'],
+            [Blockly.Msg.MATH_ROUND_OPERATOR_ROUNDDOWN, 'round_down']
+          ]
+        },
+      ],
+      "output": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"],
+      "colour": Blockly.Blocks.math.HUE,
+      "tooltip": Blockly.Msg.MATH_ROUND_TOOLTIP,
+      "helpUrl": Blockly.Msg.MATH_ROUND_HELPURL
+    });
   }
 };
