@@ -1035,6 +1035,21 @@
   "helpUrl": ""
 },
 {
+  "type": "string_length",
+  "message0": "%1 .length",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": ["String", "Array"]
+    }
+  ],
+  "output": "Number",
+  "colour": null,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "variables_set",
   "message0": "%1 = %2",
   "args0": [

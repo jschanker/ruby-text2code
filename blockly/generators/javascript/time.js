@@ -748,6 +748,16 @@ Blockly.JavaScript['string_concatenate'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ADDITION];
 };
 
+Blockly.JavaScript['string_length'] = function(block) {
+  // String or array length.
+  var text = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_FUNCTION_CALL) || '\'\'';
+  return [text + '.length', Blockly.JavaScript.ORDER_MEMBER];
+};
+
+
+//Blockly.JavaScript.quote_
+
 Blockly.JavaScript['math_number_arithmetic'] = function(block) {
   // Basic arithmetic operators, and power.
   var OPERATORS = {
