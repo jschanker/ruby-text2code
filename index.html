@@ -17,7 +17,7 @@
     <header>
       <h1><span id = "textHeader">Text</span> <span id = "twoHeader">2</span> <span id = "codeTextHeader">Code</span></h1>
     </header>
-    <div id = "spreadsheet-container">
+    <div id = "spreadsheet-container" class = "spreadsheet-container-hide">
       <div class = "tab-container"><span class = "tab-text tab-text-left">Spreadsheet</span></div>
       <form id = "spreadsheet-form">
         <table id = "spreadsheet">
@@ -279,17 +279,19 @@
               <!--<next><block type="function_defoneinput"></block></next>-->
             </xml>
         </div>
+        <button id = "convertToXMLButton">Convert XML to Blocks</button>
         <div><button id = "convert-to-ruby-text-btn">Convert to Ruby Text2Code instructions</button></div>
         <div id = "text-code">
             <form>
-              <textarea disabled = "true" style = "font-size:medium;color:green;width:50%;height:200px;scroll:true;" id = "text-code-box">Code to appear here.</textarea>
+              <textarea disabled = "true" id = "text-code-box">Code to appear here.</textarea>
+              <textarea id = "xml_data">Copy text here to save/load blocks.</textarea>
             </form>
         </div>
     </div>
     <footer>
         <h3><em>If you can describe the solution, you can code it. (At least that's the goal.)</em></h3>
     </footer>
-    <div id = "repl">
+    <div id = "repl" class = "repl-container-hide">
       <div><span class = "tab-text tab-text-right">repl.it</span></div>
       <!--<iframe src = "https://www.repl.it/languages/ruby/" id = "repl-frame"></iframe>-->
       <!--<iframe src = "https://repl.it/FDOE/1" id = "repl-frame"></iframe>-->
@@ -300,5 +302,7 @@
     <script src = "get_blocks.js"></script>
     <script src = "ruby-text.js"></script>
     <script src = "spreadsheet.js"></script>
+    <script src = "ruby-code-frame.js"></script>
+    <script src = "block-xml-conversion.js"></script>
   </body>
 </html>

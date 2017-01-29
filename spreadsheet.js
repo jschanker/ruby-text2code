@@ -1,6 +1,27 @@
 "use strict";
 
 (function() {
+  var spreadsheetContainer = document.getElementById("spreadsheet-container");
+  spreadsheetContainer.addEventListener("click", function() {
+    if(spreadsheetContainer.classList && 
+       typeof spreadsheetContainer.classList.add === "function") {
+        spreadsheetContainer.classList.remove("spreadsheet-container-hide");
+        spreadsheetContainer.classList.add("spreadsheet-container-show");
+    } else {
+      spreadsheetContainer.className = "spreadsheet-container-show";
+    }
+  });
+  spreadsheetContainer.addEventListener("mouseleave", function() {
+    if(spreadsheetContainer.classList && 
+       typeof spreadsheetContainer.classList.remove === "function") {
+        spreadsheetContainer.classList.remove("spreadsheet-container-show");
+        spreadsheetContainer.classList.add("spreadsheet-container-hide");
+    } else {
+      spreadsheetContainer.className = "spreadsheet-container-hide";
+    }
+  });
+
+
   var NUM_OF_COLS = 10;
   var NUM_OF_ROWS = 16;
       
