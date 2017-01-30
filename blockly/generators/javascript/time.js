@@ -423,6 +423,60 @@ Blockly.JavaScript['after_substring'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.JavaScript['string_charat'] = function(block) {
+  // Get letter at index.
+  // Note: Until January 2013 this block did not have the WHERE input.
+  /*var where = block.getFieldValue('WHERE') || 'FROM_START';*/
+  var textOrder = Blockly.JavaScript.ORDER_MEMBER;
+  var text = Blockly.JavaScript.valueToCode(block, 'VALUE', textOrder) || '\'\'';
+  var at = Blockly.JavaScript.getAdjusted(block, 'AT');
+
+  var code = text + '.charAt(' + at + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['string_indexof_first'] = function(block) {
+  // Search the text for a substring.
+  var operator = 'indexOf';
+  var substring = Blockly.JavaScript.valueToCode(block, 'FIND',
+      Blockly.JavaScript.ORDER_NONE) || '\'\'';
+  var text = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_MEMBER) || '\'\'';
+  var code = text + '.' + operator + '(' + substring + ')';
+  // Adjust index if using one-based indices.
+  if (block.workspace.options.oneBasedIndex) {
+    return [code + ' + 1', Blockly.JavaScript.ORDER_ADDITION];
+  }
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['string_indexof_last'] = function(block) {
+  // Search the text for a substring.
+  var operator = 'lastIndexOf';
+  var substring = Blockly.JavaScript.valueToCode(block, 'FIND',
+      Blockly.JavaScript.ORDER_NONE) || '\'\'';
+  var text = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_MEMBER) || '\'\'';
+  var code = text + '.' + operator + '(' + substring + ')';
+  // Adjust index if using one-based indices.
+  if (block.workspace.options.oneBasedIndex) {
+    return [code + ' + 1', Blockly.JavaScript.ORDER_ADDITION];
+  }
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['string_getsubstring'] = function(block) {
+  // Get substring.
+  var text = Blockly.JavaScript.valueToCode(block, 'STRING',
+      Blockly.JavaScript.ORDER_FUNCTION_CALL) || '\'\'';
+  var at1 = Blockly.JavaScript.getAdjusted(block, 'AT1');
+  var at2 = Blockly.JavaScript.getAdjusted(block, 'AT2', 1); //|| "(" + text + ").length";
+  
+  code = text + '.slice(' + at1 + ', ' + at2 + ')';
+
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
 Blockly.JavaScript['variable_general_set'] = function(block) {
   // Variable setter.
   var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',

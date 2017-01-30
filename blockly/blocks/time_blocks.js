@@ -798,244 +798,76 @@ Blockly.Blocks['string_length'] = {
   }
 };
 
-Blockly.Blocks['string_indexOf_first'] = {
-  /**
-   * Block for finding a substring in the text.
-   * @this Blockly.Block
-   */
+Blockly.Blocks['string_indexof_first'] = {
   init: function() {
-    var OPERATORS =
-        [[".find_first_occurrence_of_text(", 'FIRST'],
-         [".find_last_occurrence_of_text(", 'LAST']];
-    this.setHelpUrl(Blockly.Msg.TEXT_INDEXOF_HELPURL);
-    this.setColour(Blockly.Blocks.texts.HUE);
-    this.setOutput(true, 'Number');
-    this.appendValueInput('VALUE')
-        .setCheck('String')
-    this.appendValueInput('FIND')
-        .setCheck('String')
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'END');
-    if (Blockly.Msg.TEXT_INDEXOF_TAIL) {
-      this.appendDummyInput().appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
-    }
+    this.appendValueInput("VALUE")
+        .setCheck("String");
+    this.appendValueInput("FIND")
+        .setCheck("String")
+        .appendField(".find_first_occurrence_of_text(");
+    this.appendDummyInput()
+        .appendField(")");
     this.setInputsInline(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
-    var thisBlock = this;
-    this.setTooltip(function() {
-      return Blockly.Msg.TEXT_INDEXOF_TOOLTIP.replace('%1',
-          thisBlock.workspace.options.oneBasedIndex ? '0' : '-1');
-    });
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setTooltip('');
+    this.setHelpUrl('');
   }
 };
 
-Blockly.Blocks['string_charAt'] = {
-  /**
-   * Block for getting a character from the string.
-   * @this Blockly.Block
-   */
+Blockly.Blocks['string_indexof_last'] = {
   init: function() {
-    this.WHERE_OPTIONS =
-        [[Blockly.Msg.TEXT_CHARAT_FROM_START, 'FROM_START'],
-         [Blockly.Msg.TEXT_CHARAT_FROM_END, 'FROM_END'],
-         [Blockly.Msg.TEXT_CHARAT_FIRST, 'FIRST'],
-         [Blockly.Msg.TEXT_CHARAT_LAST, 'LAST'],
-         [Blockly.Msg.TEXT_CHARAT_RANDOM, 'RANDOM']];
-    this.setHelpUrl(Blockly.Msg.TEXT_CHARAT_HELPURL);
-    this.setColour(Blockly.Blocks.texts.HUE);
-    this.setOutput(true, 'String');
-    this.appendValueInput('VALUE')
-        .setCheck('String')
-        .appendField(Blockly.Msg.TEXT_CHARAT_INPUT_INTEXT);
-    this.appendDummyInput('AT');
+    this.appendValueInput("VALUE")
+        .setCheck("String");
+    this.appendValueInput("FIND")
+        .setCheck("String")
+        .appendField(".find_last_occurrence_of_text(");
+    this.appendDummyInput()
+        .appendField(")");
     this.setInputsInline(true);
-    this.updateAt_(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
-    var thisBlock = this;
-    this.setTooltip(function() {
-      var where = thisBlock.getFieldValue('WHERE');
-      var tooltip = Blockly.Msg.TEXT_CHARAT_TOOLTIP;
-      if (where == 'FROM_START' || where == 'FROM_END') {
-        var msg = (where == 'FROM_START') ?
-            Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP :
-            Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP;
-        tooltip += '  ' + msg.replace('%1',
-            thisBlock.workspace.options.oneBasedIndex ? '#1' : '#0');
-      }
-      return tooltip;
-    });
-  },
-  /**
-   * Create XML to represent whether there is an 'AT' input.
-   * @return {!Element} XML storage element.
-   * @this Blockly.Block
-   */
-  mutationToDom: function() {
-    var container = document.createElement('mutation');
-    var isAt = this.getInput('AT').type == Blockly.INPUT_VALUE;
-    container.setAttribute('at', isAt);
-    return container;
-  },
-  /**
-   * Parse XML to restore the 'AT' input.
-   * @param {!Element} xmlElement XML storage element.
-   * @this Blockly.Block
-   */
-  domToMutation: function(xmlElement) {
-    // Note: Until January 2013 this block did not have mutations,
-    // so 'at' defaults to true.
-    var isAt = (xmlElement.getAttribute('at') != 'false');
-    this.updateAt_(isAt);
-  },
-  /**
-   * Create or delete an input for the numeric index.
-   * @param {boolean} isAt True if the input should exist.
-   * @private
-   * @this Blockly.Block
-   */
-  updateAt_: function(isAt) {
-    // Destroy old 'AT' and 'ORDINAL' inputs.
-    this.removeInput('AT');
-    this.removeInput('ORDINAL', true);
-    // Create either a value 'AT' input or a dummy input.
-    if (isAt) {
-      this.appendValueInput('AT').setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
-        this.appendDummyInput('ORDINAL')
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
-      }
-    } else {
-      this.appendDummyInput('AT');
-    }
-    if (Blockly.Msg.TEXT_CHARAT_TAIL) {
-      this.removeInput('TAIL', true);
-      this.appendDummyInput('TAIL')
-          .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
-    }
-    var menu = new Blockly.FieldDropdown(this.WHERE_OPTIONS, function(value) {
-      var newAt = (value == 'FROM_START') || (value == 'FROM_END');
-      // The 'isAt' variable is available due to this function being a closure.
-      if (newAt != isAt) {
-        var block = this.sourceBlock_;
-        block.updateAt_(newAt);
-        // This menu has been destroyed and replaced.  Update the replacement.
-        block.setFieldValue(value, 'WHERE');
-        return null;
-      }
-      return undefined;
-    });
-    this.getInput('AT').appendField(menu, 'WHERE');
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setTooltip('');
+    this.setHelpUrl('');
   }
 };
 
-Blockly.Blocks['string_getSubstring'] = {
-  /**
-   * Block for getting substring.
-   * @this Blockly.Block
-   */
+Blockly.Blocks['string_charat'] = {
   init: function() {
-    this['WHERE_OPTIONS_1'] =
-        [[Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_START, 'FROM_START'],
-         [Blockly.Msg.TEXT_GET_SUBSTRING_START_FROM_END, 'FROM_END'],
-         [Blockly.Msg.TEXT_GET_SUBSTRING_START_FIRST, 'FIRST']];
-    this['WHERE_OPTIONS_2'] =
-        [[Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_START, 'FROM_START'],
-         [Blockly.Msg.TEXT_GET_SUBSTRING_END_FROM_END, 'FROM_END'],
-         [Blockly.Msg.TEXT_GET_SUBSTRING_END_LAST, 'LAST']];
-    this.setHelpUrl(Blockly.Msg.TEXT_GET_SUBSTRING_HELPURL);
-    this.setColour(Blockly.Blocks.texts.HUE);
-    this.appendValueInput('STRING')
-        .setCheck('String')
-        .appendField(Blockly.Msg.TEXT_GET_SUBSTRING_INPUT_IN_TEXT);
-    this.appendDummyInput('AT1');
-    this.appendDummyInput('AT2');
-    if (Blockly.Msg.TEXT_GET_SUBSTRING_TAIL) {
-      this.appendDummyInput('TAIL')
-          .appendField(Blockly.Msg.TEXT_GET_SUBSTRING_TAIL);
-    }
+    this.appendValueInput("VALUE")
+        .setCheck("String");
+    this.appendValueInput("AT")
+        .setCheck("Number")
+        .appendField(".get_character_number(");
+    this.appendDummyInput()
+        .appendField(")");
     this.setInputsInline(true);
-    this.setOutput(true, 'String');
-    this.updateAt_(1, true);
-    this.updateAt_(2, true);
-    this.setTooltip(Blockly.Msg.TEXT_GET_SUBSTRING_TOOLTIP);
-  },
-  /**
-   * Create XML to represent whether there are 'AT' inputs.
-   * @return {!Element} XML storage element.
-   * @this Blockly.Block
-   */
-  mutationToDom: function() {
-    var container = document.createElement('mutation');
-    var isAt1 = this.getInput('AT1').type == Blockly.INPUT_VALUE;
-    container.setAttribute('at1', isAt1);
-    var isAt2 = this.getInput('AT2').type == Blockly.INPUT_VALUE;
-    container.setAttribute('at2', isAt2);
-    return container;
-  },
-  /**
-   * Parse XML to restore the 'AT' inputs.
-   * @param {!Element} xmlElement XML storage element.
-   * @this Blockly.Block
-   */
-  domToMutation: function(xmlElement) {
-    var isAt1 = (xmlElement.getAttribute('at1') == 'true');
-    var isAt2 = (xmlElement.getAttribute('at2') == 'true');
-    this.updateAt_(1, isAt1);
-    this.updateAt_(2, isAt2);
-  },
-  /**
-   * Create or delete an input for a numeric index.
-   * This block has two such inputs, independant of each other.
-   * @param {number} n Specify first or second input (1 or 2).
-   * @param {boolean} isAt True if the input should exist.
-   * @private
-   * @this Blockly.Block
-   */
-  updateAt_: function(n, isAt) {
-    // Create or delete an input for the numeric index.
-    // Destroy old 'AT' and 'ORDINAL' inputs.
-    this.removeInput('AT' + n);
-    this.removeInput('ORDINAL' + n, true);
-    // Create either a value 'AT' input or a dummy input.
-    if (isAt) {
-      this.appendValueInput('AT' + n).setCheck('Number');
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
-        this.appendDummyInput('ORDINAL' + n)
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
-      }
-    } else {
-      this.appendDummyInput('AT' + n);
-    }
-    // Move tail, if present, to end of block.
-    if (n == 2 && Blockly.Msg.TEXT_GET_SUBSTRING_TAIL) {
-      this.removeInput('TAIL', true);
-      this.appendDummyInput('TAIL')
-          .appendField(Blockly.Msg.TEXT_GET_SUBSTRING_TAIL);
-    }
-    var menu = new Blockly.FieldDropdown(this['WHERE_OPTIONS_' + n],
-        function(value) {
-          var newAt = (value == 'FROM_START') || (value == 'FROM_END');
-          // The 'isAt' variable is available due to this function being a
-          // closure.
-          if (newAt != isAt) {
-            var block = this.sourceBlock_;
-            block.updateAt_(n, newAt);
-            // This menu has been destroyed and replaced.
-            // Update the replacement.
-            block.setFieldValue(value, 'WHERE' + n);
-            return null;
-          }
-          return undefined;
-        });
-
-    this.getInput('AT' + n)
-        .appendField(menu, 'WHERE' + n);
-    if (n == 1) {
-      this.moveInputBefore('AT1', 'AT2');
-    }
+    this.setOutput(true, "String");
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setTooltip('');
+    this.setHelpUrl('');
   }
 };
 
-
+Blockly.Blocks['string_getsubstring'] = {
+  init: function() {
+    this.appendValueInput("STRING")
+        .setCheck("String");
+    this.appendValueInput("AT1")
+        .setCheck("Number")
+        .appendField(".get_text_from_number(");
+    this.appendValueInput("AT2")
+        .setCheck("Number")
+        .appendField(").to_number(");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, "String");
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
 
 Blockly.Blocks['math_number_general'] = {
   init: function() {

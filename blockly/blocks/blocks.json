@@ -831,6 +831,95 @@
   "helpUrl": ""
 },
 {
+  "type": "string_indexof_first",
+  "message0": "%1 .find_first_occurrence_of_text( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "FIND",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "string_indexof_last",
+  "message0": "%1 .find_last_occurrence_of_text( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "FIND",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "string_charat",
+  "message0": "%1 .get_character_number( %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "VALUE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "AT",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "string_getsubstring",
+  "message0": "%1 .get_text_from_number( %2 ).to_number( %3 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "STRING",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "AT1",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "AT2",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": 135,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "variable_general_set",
   "message0": "set( %1 ).to( %2 )",
   "args0": [
