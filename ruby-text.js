@@ -98,7 +98,12 @@ document.getElementById("convert-to-ruby-text-btn").addEventListener("click", fu
   //textField.innerText = "Ruby with Text2Code:\n\n" + createText(xmlDoc, xmlDoc.querySelector("xml"));
   //textField.innerText += "\n\nJavaScript:\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
   //textField.innerText = textField.innerText.replace("\t", "  ");
-  textField.value = "Ruby with Text2Code:\n\n" + createText(xmlDoc, xmlDoc.querySelector("xml"));
+  try {
+    textField.value = "Ruby with Text2Code:\n\n" + createText(xmlDoc, xmlDoc.querySelector("xml"));
+  }
+  catch(e) {
+    textField.value = "Ruby with Text2Code:  ERROR PROCESSING BLOCKS: " + e.toString() + "!\n\n";
+  }
   textField.value += "\n\nJavaScript:\n\n" + Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace());
   
   eval(Blockly.JavaScript.workspaceToCode(workspace || Blockly.getMainWorkspace()));
