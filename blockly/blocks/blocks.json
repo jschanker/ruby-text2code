@@ -1245,7 +1245,7 @@
 },
 {
   "type": "math_number_arithmetic",
-  "message0": "%1 %2 %3",
+  "message0": "(%1 %2 %3)",
   "args0": [
     {
       "type": "input_value",
@@ -1272,4 +1272,167 @@
   "output": ["Number", "input_cell", "seconds", "minutes", "hours", "days", "pennies", "nickels", "quarters", "dollars"],
   "colour": null,
   "helpUrl": null
+},
+{
+  "type": "logic_compare_values",
+  "message0": "(%1 %2 %3)",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "A"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "OP",
+      "options": [
+        [
+          "==",
+          "=="
+        ],
+        [
+          "!=",
+          "!="
+        ],
+        [
+          "<",
+          "<"
+        ],
+        [
+          "<=",
+          "<="
+        ],
+        [
+          ">",
+          ">"
+        ],
+        [
+          ">=",
+          ">="
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "B"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Boolean",
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "logic_boolean_literal",  
+  "message0": "%1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "BOOL",
+      "options": [
+        ["true", "true"],
+        ["false", "false"]
+      ]
+    }
+  ],
+  "output": "Boolean",
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "logic_negate_value",
+  "message0": "(not %1)",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "BOOL",
+      "check": "Boolean"
+    }
+  ],
+  "output": "Boolean",
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "logic_operation_general",
+  "message0": "(%1 %2 %3)",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "A",
+      "check": "Boolean"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "OP",
+      "options": [
+        [
+          "and",
+          "and"
+        ],
+        [
+          "or",
+          "or"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "B",
+      "check": "Boolean"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Boolean",
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "controls_if_logic",
+  "message0": "if %1 then \n %2 \n end",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "IF0",
+      "check": "Boolean"
+    },
+    {
+      "type": "input_statement",
+      "name": "DO0"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "controls_if_if_logic",
+  "message0": "if",
+  "nextStatement": null,
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "controls_if_elseif_logic",
+  "message0": "elsif",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "controls_if_else_logic",
+  "message0": "else",
+  "previousStatement": null,
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
 }]
