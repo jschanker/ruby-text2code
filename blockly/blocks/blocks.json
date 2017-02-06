@@ -1274,6 +1274,71 @@
   "helpUrl": null
 },
 {
+  "type": "math_number_property_single",
+  "message0": "%1 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NUMBER_TO_CHECK"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "PROPERTY",
+      "options": [
+        [
+          ".is_even",
+          ".is_even"
+        ],
+        [
+          ".is_odd",
+          ".is_odd"
+        ],
+        [
+          ".is_prime",
+          ".is_prime"
+        ],
+        [
+          ".is_whole",
+          ".is_whole"
+        ],
+        [
+          ".is_positive",
+          ".is_positive"
+        ],
+        [
+          ".is_negative",
+          ".is_negative"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "output": "Boolean",
+  "colour": 210,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "math_number_property_divisible",
+  "message0": "%1.is_divisible_by(%2)",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NUMBER_TO_CHECK",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "DIVISOR",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Boolean",
+  "colour": 210,
+  "helpUrl": null
+},
+{
   "type": "logic_compare_values",
   "message0": "(%1 %2 %3)",
   "args0": [

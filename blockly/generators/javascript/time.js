@@ -374,7 +374,8 @@ Blockly.JavaScript['input_cell'] = function(block) {
     //code = parseInt(cell_val.value) || 0;
     code = Blockly.JavaScript.quote_(cell_val.value);
   } else {
-    code = parseInt(prompt("Enter number", 0)) || 0;
+    //code = parseFloat(prompt("Enter number", 0)) || 0;
+    code = Blockly.JavaScript.quote_(prompt("Enter text", ''));
   }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
@@ -383,7 +384,7 @@ Blockly.JavaScript['input_cell'] = function(block) {
 Blockly.JavaScript['prompt_for_number'] = function(block) {
   var text_text = block.getFieldValue('TEXT');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'parseInt(window.prompt("' + text_text + '"))';
+  var code = 'parseFloat(window.prompt("' + text_text + '"))';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
@@ -706,10 +707,84 @@ Blockly.JavaScript['function_calltwoinputs'] = function(block) {
 Blockly.JavaScript['math_number_general'] = function(block) {
   var number_num = block.getFieldValue('NUM');
   // TODO: Assemble JavaScript into code variable.
-  var code = parseInt(number_num);
+  var code = parseFloat(number_num);
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['math_number_property_single'] = function(block) {
+  // Check if a number is even, odd, prime, whole, positive, or negative
+  // or if it is divisible by certain number. Returns true or false.
+  var number_to_check = Blockly.JavaScript.valueToCode(block, 'NUMBER_TO_CHECK',
+      Blockly.JavaScript.ORDER_MODULUS) || '0';
+  var dropdown_property = block.getFieldValue('PROPERTY');
+  var code;
+  if (dropdown_property == '.is_prime') {
+    // Prime is a special case as it is not a one-liner test.
+    var functionName = Blockly.JavaScript.provideFunction_(
+        'mathIsPrime',
+        ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(n) {',
+         '  // https://en.wikipedia.org/wiki/Primality_test#Naive_methods',
+         '  if (n == 2 || n == 3) {',
+         '    return true;',
+         '  }',
+         '  // False if n is NaN, negative, is 1, or not whole.',
+         '  // And false if n is divisible by 2 or 3.',
+         '  if (isNaN(n) || n <= 1 || n % 1 != 0 || n % 2 == 0 ||' +
+            ' n % 3 == 0) {',
+         '    return false;',
+         '  }',
+         '  // Check all the numbers of form 6k +/- 1, up to sqrt(n).',
+         '  for (var x = 6; x <= Math.sqrt(n) + 1; x += 6) {',
+         '    if (n % (x - 1) == 0 || n % (x + 1) == 0) {',
+         '      return false;',
+         '    }',
+         '  }',
+         '  return true;',
+         '}']);
+    code = functionName + '(' + number_to_check + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+  }
+  switch (dropdown_property) {
+    case '.is_even':
+      code = number_to_check + ' % 2 == 0';
+      break;
+    case '.is_odd':
+      code = number_to_check + ' % 2 == 1';
+      break;
+    case '.is_whole':
+      code = number_to_check + ' % 1 == 0';
+      break;
+    case '.is_positive':
+      code = number_to_check + ' > 0';
+      break;
+    case '.is_negative':
+      code = number_to_check + ' < 0';
+      break;
+/*
+    case 'DIVISIBLE_BY':
+      var divisor = Blockly.JavaScript.valueToCode(block, 'DIVISOR',
+          Blockly.JavaScript.ORDER_MODULUS) || '0';
+      code = number_to_check + ' % ' + divisor + ' == 0';
+      break;
+*/
+  }
+  return [code, Blockly.JavaScript.ORDER_EQUALITY];
+};
+
+Blockly.JavaScript['math_number_property_divisible'] = function(block) {
+  // Check if a number is even, odd, prime, whole, positive, or negative
+  // or if it is divisible by certain number. Returns true or false.
+  var number_to_check = Blockly.JavaScript.valueToCode(block, 'NUMBER_TO_CHECK',
+      Blockly.JavaScript.ORDER_MODULUS) || '0';
+  var code;
+  var divisor = Blockly.JavaScript.valueToCode(block, 'DIVISOR',
+                Blockly.JavaScript.ORDER_MODULUS) || '0';
+  code = number_to_check + ' % ' + divisor + ' == 0';
+
+  return [code, Blockly.JavaScript.ORDER_EQUALITY];
+};
+
 
 Blockly.JavaScript['math_number_single'] = function(block) {
   // Math operators with single operand.

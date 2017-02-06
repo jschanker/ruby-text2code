@@ -1353,3 +1353,50 @@ Blockly.Blocks['controls_if_else_logic'] = {
     this.contextMenu = false;
   }
 };
+
+Blockly.Blocks['math_number_property_single'] = {
+  /**
+   * Block for checking if a number is even, odd, prime, whole, positive,
+   * negative or if it is divisible by certain number.
+   * @this Blockly.Block
+   */
+  init: function() {
+    var PROPERTIES =
+        [['.is_even', '.is_even'],
+         ['.is_odd', '.is_odd'],
+         ['.is_prime', '.is_prime'],
+         ['.is_whole', '.is_whole'],
+         ['.is_positive', '.is_positive'],
+         ['.is_negative', '.is_negative']];
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendValueInput('NUMBER_TO_CHECK')
+        .setCheck('Number');
+    var dropdown = new Blockly.FieldDropdown(PROPERTIES);
+    this.appendDummyInput()
+        .appendField(dropdown, 'PROPERTY');
+    this.setInputsInline(true);
+    this.setOutput(true, 'Boolean');
+    this.setTooltip(Blockly.Msg.MATH_IS_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['math_number_property_divisible'] = {
+  /**
+   * Block for checking if a number is even, odd, prime, whole, positive,
+   * negative or if it is divisible by certain number.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendValueInput('NUMBER_TO_CHECK')
+        .setCheck('Number');
+    this.appendValueInput('DIVISOR')
+        .appendField(".is_divisible_by(", 'PROPERTY')
+        .setCheck('Number');
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, 'Boolean');
+    this.setTooltip(Blockly.Msg.MATH_IS_TOOLTIP);
+  }
+};
