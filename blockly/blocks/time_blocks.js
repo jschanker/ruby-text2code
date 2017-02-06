@@ -429,7 +429,7 @@ Blockly.Blocks['input_cell'] = {
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["E","E"], ["F","F"], ["G","G"], ["H","H"], ["I","I"], ["J","J"]]), "COL")
         .appendField(new Blockly.FieldNumber(1, 1, 15), "ROW");
-    this.setOutput(true, ["Number", "seconds", "minutes", "hours", "days", 
+    this.setOutput(true, ["Number", "String", "seconds", "minutes", "hours", "days", 
                           "pennies", "nickels", "quarters", "dollars", "input_cell"]);
     this.setColour(160);
     this.setTooltip('');

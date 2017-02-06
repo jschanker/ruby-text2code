@@ -371,7 +371,8 @@ Blockly.JavaScript['input_cell'] = function(block) {
   var code;
   
   if(cell_val) {
-    code = parseInt(cell_val.value) || 0;
+    //code = parseInt(cell_val.value) || 0;
+    code = Blockly.JavaScript.quote_(cell_val.value);
   } else {
     code = parseInt(prompt("Enter number", 0)) || 0;
   }
