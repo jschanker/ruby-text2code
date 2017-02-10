@@ -70,6 +70,8 @@ function getBlockObjects() {
   blocks['controls_if_if_logic'] = {"type":"controls_if_if_logic","message0":"if","nextStatement":null,"colour":210,"tooltip":"","helpUrl":""};
   blocks['controls_if_elseif_logic'] = {"type":"controls_if_elseif_logic","message0":"elsif","previousStatement":null,"nextStatement":null,"colour":210,"tooltip":"","helpUrl":""};
   blocks['controls_if_else_logic'] = {"type":"controls_if_else_logic","message0":"else","previousStatement":null,"colour":210,"tooltip":"","helpUrl":""};
+  blocks['controls_repeat_times'] = {"type":"controls_repeat_times","message0":"%1 .times do \n%2 %3 end","args0":[{"type":"input_value","name":"TIMES","check":"Number"},{"type":"input_dummy"},{"type":"input_statement","name":"DO"}],"previousStatement":null,"nextStatement":null,"colour":120,"tooltip":null,"helpUrl":null};
+  blocks['controls_whileUntil_do'] = {"type":"controls_whileUntil_do","message0":"%1 %2 do \n%3 %4 end","args0":[{"type":"field_dropdown","name":"MODE","options":[["while","while"],["until","until"]]},{"type":"input_value","name":"BOOL","check":"Boolean"},{"type":"input_dummy"},{"type":"input_statement","name":"DO"}],"inputsInline":true,"colour":120,"tooltip":"","helpUrl":""};
 
   return blocks;
 }

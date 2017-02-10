@@ -1400,3 +1400,69 @@ Blockly.Blocks['math_number_property_divisible'] = {
     this.setTooltip(Blockly.Msg.MATH_IS_TOOLTIP);
   }
 };
+
+Blockly.Blocks['controls_repeat_times'] = {
+  /**
+   * Block for repeat n times (external number).
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1 .times do %2 %3 end",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TIMES",
+          "check": "Number"
+        },
+        {
+          "type": "input_dummy"
+        },
+        {
+          "type": "input_statement",
+          "name": "DO"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": Blockly.Blocks.loops.HUE,
+      "tooltip": Blockly.Msg.CONTROLS_REPEAT_TOOLTIP,
+      "helpUrl": Blockly.Msg.CONTROLS_REPEAT_HELPURL
+    });
+    this.setInputsInline(true);
+  }
+};
+
+Blockly.Blocks['controls_whileUntil_do'] = {
+  /**
+   * Block for 'do while/until' loop.
+   * @this Blockly.Block
+   */
+  init: function() {
+    var OPERATORS =
+        [['while', 'while'],
+         ['until', 'until']];
+    this.setHelpUrl(Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL);
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('BOOL')
+        .setCheck('Boolean')
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'MODE');
+    this.appendDummyInput()
+        .appendField('do');
+    this.appendStatementInput('DO');
+    this.appendDummyInput()
+        .appendField('end');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var op = thisBlock.getFieldValue('MODE');
+      var TOOLTIPS = {
+        'WHILE': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE,
+        'UNTIL': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL
+      };
+      return TOOLTIPS[op];
+    });
+  }
+};

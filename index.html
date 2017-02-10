@@ -175,12 +175,12 @@
                   <value name="A">
                     <block type="math_number_general">
                       <field name="NUM">1</field>
-                    </shadow>
+                    </block>
                   </value>
                   <value name="B">
                     <block type="math_number_general">
                       <field name="NUM">1</field>
-                    </shadow>
+                    </block>
                   </value>
                 </block>
                 <!--
@@ -252,6 +252,22 @@
                 <!--<block type="controls_if_if_logic"></block>
                 <block type="controls_if_elseif_logic"></block>
                 <block type="controls_if_else_logic"></block>-->
+              </category>
+              <category name="Loops" colour="120">
+                <block type="controls_repeat_times">
+                  <value name="TIMES">
+                    <block type="math_number_general">
+                      <field name="NUM">5</field>
+                    </block>
+                  </value>
+                </block>
+                <block type="controls_whileUntil_do">
+                  <value name="BOOL">
+                    <block type="logic_boolean_literal">
+                      <field name = "BOOL">false</field>
+                    </block>
+                  </value>
+                </block>
               </category>
               <category name="Function Definitions" colour="290">
                 <block type="function_getself"></block>
