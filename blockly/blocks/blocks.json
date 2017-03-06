@@ -699,6 +699,21 @@
   "helpUrl": ""
 },
 {
+  "type": "prompt_for_text",
+  "message0": "prompt_for_text_with_message(\" %1 \")",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "TEXT",
+      "text": "Enter text: "
+    }
+  ],
+  "output": "String",
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "units_convert",
   "message0": "%1 .units.to_units_with_conversion_factor( %2 )",
   "args0": [

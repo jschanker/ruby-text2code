@@ -389,6 +389,14 @@ Blockly.JavaScript['prompt_for_number'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.JavaScript['prompt_for_text'] = function(block) {
+  var text_text = block.getFieldValue('TEXT');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'window.prompt("' + text_text + '")';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
 Blockly.JavaScript['units_convert'] = function(block) {
   var value_num = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC) || 0;
   var value_factor = Blockly.JavaScript.valueToCode(block, 'FACTOR', Blockly.JavaScript.ORDER_ATOMIC) || 1;

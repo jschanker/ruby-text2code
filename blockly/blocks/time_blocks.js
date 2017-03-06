@@ -479,6 +479,19 @@ Blockly.Blocks['prompt_for_number'] = {
   }
 };
 
+Blockly.Blocks['prompt_for_text'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("prompt_for_text_with_message(\"")
+        .appendField(new Blockly.FieldTextInput("Enter text: "), "TEXT")
+        .appendField("\")");
+    this.setOutput(true, "String");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks['units_convert'] = {
   init: function() {
     this.appendValueInput("NUM")
