@@ -434,6 +434,64 @@ Blockly.JavaScript['input_cell_range'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['variable_input_cell_range'] = function(block) {
+  var value_cola = Blockly.JavaScript.valueToCode(block, 'COLA', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_rowa = Blockly.JavaScript.valueToCode(block, 'ROWA', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_colb = Blockly.JavaScript.valueToCode(block, 'COLB', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_rowb = Blockly.JavaScript.valueToCode(block, 'ROWB', Blockly.JavaScript.ORDER_ATOMIC);
+  
+  var dropdown_col_A = value_cola ? value_cola.toUpperCase().trim() : "A";
+  var number_row_A = parseInt(value_rowa) ? parseInt(value_rowa) : 0;
+  var dropdown_col_B = value_colb ? value_colb.toUpperCase().trim() : "B";
+  var number_row_B = parseInt(value_rowb) ? parseInt(value_rowb) : 0;
+  // TODO: Assemble JavaScript into code variable.
+  var ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  
+  number_row_start = Math.min(number_row_A, number_row_B);
+  number_row_end = Math.max(number_row_A, number_row_B);
+  
+  var col_A_index = ALPHABET.indexOf(dropdown_col_A);
+  var col_B_index = ALPHABET.indexOf(dropdown_col_B);
+  if(col_A_index < 0) {
+    col_A_index = 0;
+  }
+  if(col_B_index < 0) {
+    col_B_index = 0;
+  }
+  
+  col_start_index = Math.min(col_A_index, col_B_index);
+  col_end_index = Math.max(col_A_index, col_B_index);
+  
+  code = "[";
+  
+  for(var r = number_row_start; r <= number_row_end; r++) {
+    for(var c = col_start_index; c <= col_end_index; c++) {
+      //code += Blockly.JavaScript.quote_(ALPHABET[c] + r) + ",";
+      var cell = ALPHABET[c] + r;
+      var cell_val = document.getElementById(cell);
+      var code;
+  
+      if(cell_val) {
+        //code = parseInt(cell_val.value) || 0;
+        code += Blockly.JavaScript.quote_(cell_val.value) + ",";
+      } else {
+        //code = parseFloat(prompt("Enter number", 0)) || 0;
+        code = Blockly.JavaScript.quote_(prompt("Enter text", '')) + ",";
+      }
+
+    }
+  }
+  
+  if(code.charAt(code.length-1) === ",") {
+    code = code.substring(0,code.length-1);
+  }
+  
+  code += "]";
+  
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['reduce_no_seed'] = function(block) {
   var value_list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
   var variable_acc = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACC'), Blockly.Variables.NAME_TYPE);

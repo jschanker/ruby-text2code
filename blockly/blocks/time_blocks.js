@@ -453,6 +453,26 @@ Blockly.Blocks['input_cell_range'] = {
   }
 };
 
+Blockly.Blocks['variable_input_cell_range'] = {
+  init: function() {
+    this.appendValueInput("COLA")
+        .setCheck("String");
+    this.appendValueInput("ROWA")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField(":");
+    this.appendValueInput("COLB")
+        .setCheck("String");
+    this.appendValueInput("ROWB")
+        .setCheck("Number");
+    this.setInputsInline(true);
+    this.setOutput(true, "Array");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks['reduce_no_seed'] = {
   init: function() {
     this.appendValueInput("LIST")

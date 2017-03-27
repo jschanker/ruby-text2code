@@ -1692,6 +1692,40 @@
   "helpUrl": ""
 },
 {
+  "type": "variable_input_cell_range",
+  "message0": "%1 %2 : %3 %4 %5",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "COLA",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "ROWA",
+      "check": "Number"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "COLB",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "ROWB",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Array",
+  "colour": 160,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "reduce_no_seed",
   "message0": "%1 .reduce{| %2 , %3 | %4 %5 }",
   "args0": [
