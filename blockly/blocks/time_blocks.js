@@ -437,6 +437,43 @@ Blockly.Blocks['input_cell'] = {
   }
 };
 
+Blockly.Blocks['input_cell_range'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["E","E"], ["F","F"], ["G","G"], ["H","H"], ["I","I"], ["J","J"]]), "COLA")
+        .appendField(new Blockly.FieldNumber(1, 1, 15), "ROWA")
+        .appendField(":")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["E","E"], ["F","F"], ["G","G"], ["H","H"], ["I","I"], ["J","J"]]), "COLB")
+        .appendField(new Blockly.FieldNumber(1, 1, 15), "ROWB");        
+        
+    this.setOutput(true, "Array");
+    this.setColour(160);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['reduce_no_seed'] = {
+  init: function() {
+    this.appendValueInput("LIST")
+        .setCheck("Array");
+    this.appendDummyInput()
+        .appendField(".reduce{ |")
+        .appendField(new Blockly.FieldVariable("acc"), "ACC")
+        .appendField(",")
+        .appendField(new Blockly.FieldVariable("item"), "ITEM")
+        .appendField("|");
+    this.appendStatementInput("DO")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("}");
+    this.setOutput(true, null)
+    this.setColour(260);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks['print_in_result_cell'] = {
   init: function() {
     this.appendValueInput("EXP")

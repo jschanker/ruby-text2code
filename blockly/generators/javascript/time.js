@@ -381,6 +381,80 @@ Blockly.JavaScript['input_cell'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['input_cell_range'] = function(block) {
+  var dropdown_col_A = block.getFieldValue('COLA');
+  var number_row_A = parseInt(block.getFieldValue('ROWA'));
+  var dropdown_col_B = block.getFieldValue('COLB');
+  var number_row_B = parseInt(block.getFieldValue('ROWB'));
+  // TODO: Assemble JavaScript into code variable.
+  var ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  
+  number_row_start = Math.min(number_row_A, number_row_B);
+  number_row_end = Math.max(number_row_A, number_row_B);
+  
+  var col_A_index = ALPHABET.indexOf(dropdown_col_A);
+  var col_B_index = ALPHABET.indexOf(dropdown_col_B);
+  if(col_A_index < 0) {
+    col_A_index = 0;
+  }
+  if(col_B_index < 0) {
+    col_B_index = 0;
+  }
+  
+  col_start_index = Math.min(col_A_index, col_B_index);
+  col_end_index = Math.max(col_A_index, col_B_index);
+  
+  code = "[";
+  
+  for(var r = number_row_start; r <= number_row_end; r++) {
+    for(var c = col_start_index; c <= col_end_index; c++) {
+      //code += Blockly.JavaScript.quote_(ALPHABET[c] + r) + ",";
+      var cell = ALPHABET[c] + r;
+      var cell_val = document.getElementById(cell);
+      var code;
+  
+      if(cell_val) {
+        //code = parseInt(cell_val.value) || 0;
+        code += Blockly.JavaScript.quote_(cell_val.value) + ",";
+      } else {
+        //code = parseFloat(prompt("Enter number", 0)) || 0;
+        code = Blockly.JavaScript.quote_(prompt("Enter text", '')) + ",";
+      }
+
+    }
+  }
+  
+  if(code.charAt(code.length-1) === ",") {
+    code = code.substring(0,code.length-1);
+  }
+  
+  code += "]";
+  
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['reduce_no_seed'] = function(block) {
+  var value_list = Blockly.JavaScript.valueToCode(block, 'LIST', Blockly.JavaScript.ORDER_ATOMIC);
+  var variable_acc = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ACC'), Blockly.Variables.NAME_TYPE);
+  var variable_item = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('ITEM'), Blockly.Variables.NAME_TYPE);
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'DO');
+  
+  statements_do = statements_do.replace(/answer/gi, "return answer");
+  
+  //var statements = statements_do.split("\n");
+  //var numOfStatements = statements.length;
+  
+  //if(numOfStatements > 0) {
+  //  statements[numOfStatements-1] = 'return (' + statements[numOfStatements 
+  // TODO: Assemble JavaScript into code variable.
+  var code = value_list + '.reduce(function(' + variable_acc + ',' + variable_item + ') {' + '\n';
+  //code += Blockly.JavaScript.INDENT + statements_do; 
+  code += statements_do;
+  code += '\n})';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['prompt_for_number'] = function(block) {
   var text_text = block.getFieldValue('TEXT');
   // TODO: Assemble JavaScript into code variable.
